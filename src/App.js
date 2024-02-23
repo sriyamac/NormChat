@@ -3,6 +3,8 @@ import './App.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { BrowserRouter as Router, Link, Route, Routes } from 'react-router-dom';
 import Login from './Login';
+import ChatBox  from './Chatbox'; //importing Chatbox component
+
 
 function App() {
   return (
@@ -10,6 +12,7 @@ function App() {
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/login" element={<Login />} />
+        <Route path="/chat" element={<ChatBox  />} />
       </Routes>
     </Router>
   );
@@ -22,5 +25,6 @@ const Home = () => (
     <p className="mt-3">Created by students for students to answer all UNC Charlotte-related questions.</p>
   </div>
 );
+
 
 export default App;
