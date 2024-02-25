@@ -1,6 +1,6 @@
 import { useState } from "react";
-import { addDoc, serverTimestamp } from 'firebase/firestore'; //adds doc to collection
-import { db } from "../firebase-config";
+import { addDoc, serverTimestamp, collection } from 'firebase/firestore'; //adds doc to collection
+import { db, auth } from "../firebase-config";
 
 export const Chat = (props) => {
     const {room} = props; //may delete later 

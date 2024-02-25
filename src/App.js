@@ -21,7 +21,7 @@ function App() {
         <div>
           <Auth setIsAuth = {setIsAuth} /> 
         </div>
-        <p>blah blah slogan :D</p>
+        <p>Created by students for students to answer all UNC Charlotte-related questions.</p>
     </div>
   );
   }
