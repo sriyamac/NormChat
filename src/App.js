@@ -27,8 +27,8 @@ function App() {
   }
 
   return  <div> { room ? ( //if user is authenticated, redircts to chat
-      <Chat />
-      
+      <Chat room = {room} /> //passes room variable through Chat component
+
       ) : (
         <div className = "room"> 
           <label> Topic </label> 
