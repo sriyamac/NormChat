@@ -1,30 +1,46 @@
-import React from 'react';
+import React, { useState, useRef } from 'react';
 import './App.css';
-import 'bootstrap/dist/css/bootstrap.min.css';
-import { BrowserRouter as Router, Link, Route, Routes } from 'react-router-dom';
-import Login from './Login';
-import ChatBox  from './Chatbox'; //importing Chatbox component
+import { Auth } from './components/Auth.js';
+import { Chat } from "./components/Chat.js"
+import Cookies from "universal-cookie";
+const cookies = new Cookies(); //get, set, and remove cookies from browser
 
 
-function App() {
-  return (
-    <Router>
-      <Routes>
-        <Route path="/" element={<Home />} />
-        <Route path="/login" element={<Login />} />
-        <Route path="/chat" element={<ChatBox  />} />
-      </Routes>
-    </Router>
+function App() { 
+  const [isAuth, setIsAuth] = useState(cookies.get("auth-token")) //if there is an auth-token then set to true (you can check by inspecting page manually)
+  const [room, setRoom] = useState(null) //for joining different chatbots, implementation might be removed
+
+  const roomInputRef = useRef(null)
+
+  if (!isAuth) { //user is not authenticated
+  return ( //then shows user authentication process 
+    <div className = "App">
+      <header>
+        <h1>NormChat</h1>
+      </header>
+        <div>
+          <Auth setIsAuth = {setIsAuth} /> 
+        </div>
+        <p>blah blah slogan :D</p>
+    </div>
   );
+  }
+
+  return  <div> { room ? ( //if user is authenticated, redircts to chat
+      <Chat />
+      
+      ) : (
+        <div className = "room"> 
+          <label> Topic </label> 
+          <input  ref = {roomInputRef}/> {/**every chat has a reference assigned to it through "ref" */}
+          <button onClick = {() => setRoom(roomInputRef.current.value)}> Enter Chat </button>  {/**getting value of input and setting it to value of input */}
+        </div>
+      )}
+    </div>;
+
 }
 
-const Home = () => (
-  <div className="container text-center mt-5">
-    <h1>NormChat</h1>
-    <Link to="/login" className="btn btn-primary">Let's get Started</Link>
-    <p className="mt-3">Created by students for students to answer all UNC Charlotte-related questions.</p>
-  </div>
-);
+
 
 
 export default App;
