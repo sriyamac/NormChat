@@ -26,20 +26,25 @@ function App() {
   );
   }
 
-  return  <div> { room ? ( //if user is authenticated, redircts to chat
-      <Chat room = {room} /> //passes room variable through Chat component
+  return (
+    <div>
+      <Chat room={room || "NormChat"} />
+    </div>
+  );
+  }
 
-      ) : (
-        <div className = "room"> 
-          <label> Topic </label> 
-          <input  ref = {roomInputRef}/> {/**every chat has a reference assigned to it through "ref" */}
-          <button onClick = {() => setRoom(roomInputRef.current.value)}> Enter Chat </button>  {/**getting value of input and setting it to value of input */}
-        </div>
-      )}
-    </div>;
+    //IMPLEMENTATION BELOW: POSSIBLE ROOM BEFORE ENTERING CHAT
+  // return  <div> { room ? ( //if user is authenticated, redircts to chat
+  //     <Chat room = {"NormChat"} /> //passes room variable through Chat component
 
-}
-
+  //     ) : (
+  //       <div className = "room"> 
+  //         <label> Topic </label> 
+  //         <input  ref = {roomInputRef}/> {/**every chat has a reference assigned to it through "ref" */}
+  //         <button onClick = {() => setRoom(roomInputRef.current.value)}> Enter Chat </button>  {/**getting value of input and setting it to value of input */}
+  //       </div>
+  //     )}
+  //   </div>;
 
 
 

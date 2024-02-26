@@ -14,7 +14,7 @@ body {
 
 .app-header {
   text-align: center;
-  background-color: #3b5998;
+  background-color: #2d651d;
   color: white;
   width: 100%;
 }
@@ -37,7 +37,7 @@ body {
 .room input {
   width: 200px;
   height: 30px;
-  border: 2px solid #3b5998;
+  border: 2px solid #2d651d;
   border-radius: 6px;
   padding-left: 5px;
   font-size: 20px;
@@ -53,7 +53,7 @@ body {
   font-size: 20px;
   text-align: center;
   margin: 5px;
-  background-color: #3b5998;
+  background-color: #2d651d;
   color: white;
   cursor: pointer;
 }
@@ -71,10 +71,10 @@ body {
   margin: 0 auto;
   border-radius: 5px;
   overflow: hidden;
-  border: 2px solid #3b5998;
+  border: 2px solid #2d651d;
 }
 .header {
-  background-color: #3b5998;
+  background-color: #2d651d;
   color: white;
   width: 100%;
   text-align: center;
@@ -123,7 +123,7 @@ body {
 .send-button {
   border: none;
   outline: none;
-  background: #3b5998;
+  background: #2d651d;
   color: #fff;
   font-size: 16px;
   font-weight: bold;

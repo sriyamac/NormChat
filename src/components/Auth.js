@@ -5,12 +5,18 @@ import "../styles/App.css";
 import Cookies from "universal-cookie";
 const cookies = new Cookies();//get, set, and remove cookies from browser
 
-export const Auth = ({ setIsAuth }) => {
+export const Auth = ({ setIsAuth, setRoom }) => {
   const signInWithGoogle = async () => {
+    
     try {
       const result = await signInWithPopup(auth, provider); //logged-in user's info stored in result
       cookies.set("auth-token", result.user.refreshToken);
       setIsAuth(true); //setting authentication to true whenever the uesr logs in
+
+      const roomValue = "NormChat"; //name of the assigned chatbot
+      setRoom(roomValue);
+      window.location.href = `/chat/${roomValue}`; //redirecting to chatbot
+
     } catch (x) { //trouble shooting
       console.error(x);
     }
