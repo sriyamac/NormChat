@@ -16,17 +16,17 @@ function App() {
   const roomInputRef = useRef(null)
 
   if (!isAuth) { //user is not authenticated
-  return ( //then shows user authentication process 
-    <div className = "App">
-      <header>
-        <h1>NormChat</h1>
-      </header>
-        <div>
-          <Auth setIsAuth = {setIsAuth} /> 
-        </div>
-        <p>Created by students for students to answer all UNC Charlotte-related questions.</p>
-    </div>
-  );
+    return ( //then shows user authentication process 
+      <div className = "App">
+        <header>
+          <h1>NormChat</h1>
+        </header>
+          <div>
+            <Auth setIsAuth = {setIsAuth} /> 
+          </div>
+          <p>Created by students for students to answer all UNC Charlotte-related questions.</p>
+      </div>
+    );
   }
 
   return (
