@@ -3,10 +3,10 @@ import "./styles/App.css";
 import { Auth } from './components/Auth.js';
 import { Chat } from "./components/Chat.js"
 import Cookies from "universal-cookie";
-const cookies = new Cookies(); //get, set, and remove cookies from browser
-
 import { BrowserRouter, Routes, Route, Link } from "react-router-dom"
 import HomeTest from './HomeTest'
+const cookies = new Cookies(); //get, set, and remove cookies from browser
+
 
 function App() { 
   const [isAuth, setIsAuth] = useState(cookies.get("auth-token")) //if there is an auth-token then set to true (you can check by inspecting page manually)
