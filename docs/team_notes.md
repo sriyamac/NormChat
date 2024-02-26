@@ -15,3 +15,4 @@ currently using [firebase](https://console.firebase.google.com/) as the DB for t
 ### React Router
 Tutorial: https://www.w3schools.com/react/react_router.asp
 Docs: (https://reactrouter.com/en/main/start/overview)https://reactrouter.com/en/main/start/overview
+Navigate from one page to another: https://stackoverflow.com/questions/37295377/how-to-navigate-from-one-page-to-another-in-react-js
