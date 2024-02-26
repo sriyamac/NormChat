@@ -9,3 +9,7 @@ currently using [firebase](https://console.firebase.google.com/) as the DB for t
 3. Sign-out feature
 4. Feedback page
 5. Make the site look nice lol
+
+### React Router
+Tutorial: https://www.w3schools.com/react/react_router.asp
+Docs: (https://reactrouter.com/en/main/start/overview)https://reactrouter.com/en/main/start/overview
