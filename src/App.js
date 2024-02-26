@@ -1,15 +1,16 @@
 
 import './App.css';
+import { BrowserRouter, Routes, Route, Link } from "react-router-dom"
+import HomeTest from './HomeTest'
 
 function App() {
   return (
-    <div className="App">
-      <div>
-        <h1>NormChat</h1>
-        <p> sup y'all</p>
-      </div>
-
-    </div>
+    <BrowserRouter>
+      <Link to="/"></Link>
+      <Routes>
+        <Route path="/" element={ <HomeTest/> }></Route>
+      </Routes>
+    </BrowserRouter>
   );
 }
 
