@@ -1,10 +1,11 @@
 import React, { useState, useRef } from 'react';
 import "./styles/App.css";
 import { Auth } from './components/Auth.js';
+import { ConversationList } from './components/ConversationList.js';
 import { Chat } from "./components/Chat.js"
 import Cookies from "universal-cookie";
 import { BrowserRouter, Routes, Route, Link } from "react-router-dom"
-import HomeTest from './HomeTest'
+
 const cookies = new Cookies(); //get, set, and remove cookies from browser
 
 
@@ -32,7 +33,8 @@ function App() {
     <BrowserRouter>
       <Link to="/"></Link>
       <Routes>
-        <Route path="/" element={ <Chat/> }></Route>
+        <Route path="/" element={ <Chat room={room || "NormChat"} /> }></Route>
+        <Route path="/conversation-list" element={ <ConversationList /> }></Route>
       </Routes>
     </BrowserRouter>
   );
