@@ -51,7 +51,7 @@ export const Chat = (props) => {
         <div className = "header"> 
             <h1>{room}</h1>
         </div>
-        <div> {messages.map((message) => <h1> {message.text} </h1>)}</div>
+        <div> {" "}{messages.map((message) => <h1> {message.text} </h1>)}</div>
         <form onSubmit = {handleSubmit} className = "new-message-form"> 
             <input 
             className  = "new-message-input"
