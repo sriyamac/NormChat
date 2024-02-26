@@ -1,8 +1,11 @@
 import React, { useState, useRef } from 'react';
 import "./styles/App.css";
 import { Auth } from './components/Auth.js';
+import { ConversationList } from './components/ConversationList.js';
 import { Chat } from "./components/Chat.js"
 import Cookies from "universal-cookie";
+import { BrowserRouter, Routes, Route, Link } from "react-router-dom"
+
 const cookies = new Cookies(); //get, set, and remove cookies from browser
 
 
@@ -13,23 +16,27 @@ function App() {
   const roomInputRef = useRef(null)
 
   if (!isAuth) { //user is not authenticated
-  return ( //then shows user authentication process 
-    <div className = "App">
-      <header>
-        <h1>NormChat</h1>
-      </header>
-        <div>
-          <Auth setIsAuth = {setIsAuth} /> 
-        </div>
-        <p>Created by students for students to answer all UNC Charlotte-related questions.</p>
-    </div>
-  );
+    return ( //then shows user authentication process 
+      <div className = "App">
+        <header>
+          <h1>NormChat</h1>
+        </header>
+          <div>
+            <Auth setIsAuth = {setIsAuth} /> 
+          </div>
+          <p>Created by students for students to answer all UNC Charlotte-related questions.</p>
+      </div>
+    );
   }
 
   return (
-    <div>
-      <Chat room={room || "NormChat"} />
-    </div>
+    <BrowserRouter>
+      <Link to="/"></Link>
+      <Routes>
+        <Route path="/" element={ <Chat room={room || "NormChat"} /> }></Route>
+        <Route path="/conversation-list" element={ <ConversationList /> }></Route>
+      </Routes>
+    </BrowserRouter>
   );
   }
 
