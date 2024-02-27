@@ -11,6 +11,15 @@ export const Chat = (props) => {
     
     const messagesRef = collection(db, "messages"); //reference to the specific DB collection
 
+
+    const handleLeaveChat = () => {
+    
+        // Redirect to the conversation list
+        window.location.href = "/conversation-list";
+      };
+    
+
+
     useEffect(() => { //firebase checks any changes in our collections
         const queryMessages = query( //checks if room is the same as static room name and makes a query
             messagesRef,
@@ -70,6 +79,7 @@ export const Chat = (props) => {
               Send
             </button>
           </form>
+          <button className="send-button" onClick={handleLeaveChat}>Close Chat</button>
         </div>
       );
     };

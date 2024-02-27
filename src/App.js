@@ -6,9 +6,9 @@ import { Chat } from "./components/Chat.js"
 import Cookies from "universal-cookie";
 import { BrowserRouter, Routes, Route, Link } from "react-router-dom"
 
-
 import { v4 as uuidv4 } from 'uuid'; //for new room reference 
-
+import { signOut } from 'firebase/auth';
+import { auth } from './firebase-config'
 
 const cookies = new Cookies(); //get, set, and remove cookies from browser
 
@@ -21,6 +21,17 @@ function App() {
 
   const roomInputRef = useRef(null)
 
+
+  const signUserOut = async () => {
+    try {
+      await signOut(auth);
+      cookies.remove("auth-token");
+      setIsAuth(false);
+      setRoom(null);
+    } catch (error) {
+      console.error('Error signing out:', error);
+    }
+  };
 
 
   if (!isAuth) { //user is not authenticated
@@ -38,6 +49,7 @@ function App() {
   }
 
   return (
+    <> 
     <BrowserRouter>
       <Link to="/"></Link>
       <Routes>
@@ -45,8 +57,14 @@ function App() {
         <Route path="/conversation-list" element={ <ConversationList /> }></Route>
       </Routes>
     </BrowserRouter>
+    <div class= "send-button" className="sign-out"> 
+      <button onClick={signUserOut}> SIGN OUT </button>
+    </div>
+    </>
   );
   }
+
+  
 
     //IMPLEMENTATION BELOW: POSSIBLE ROOM BEFORE ENTERING CHAT
   // return  <div> { room ? ( //if user is authenticated, redircts to chat
