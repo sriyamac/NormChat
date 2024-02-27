@@ -29,17 +29,21 @@ export const ConversationList = () => {
   }, []);
 
   return (
-    <div>
+    <div className="chat-app">
+      <div className="header">
       <h1>Conversation List</h1>
+      </div>
+      <div className="messages">
       <ul>
         {closedRooms.map((closedRoom) => (
           <li key={closedRoom.id}>
             <Link to={`/conversation-list/${closedRoom.id}`}>
-            {`Room: ${closedRoom.room}, Last Message: ${closedRoom.lastMessage}`} {/**displays the room code and the last message the user sent */}
+              <strong>{`Room:`}</strong> {closedRoom.room}, <strong>{`Last Message:`}</strong> {closedRoom.lastMessage}
             </Link>
           </li>
         ))}
       </ul>
+      </div>
     </div>
   );
 };
