@@ -5,7 +5,7 @@ import { ConversationList } from './components/ConversationList.js';
 import { Chat } from "./components/Chat.js"
 import Cookies from "universal-cookie";
 import { BrowserRouter, Routes, Route, Link } from "react-router-dom"
-
+import {Layout} from  "./Layout.js"
 import { v4 as uuidv4 } from 'uuid'; //for new room reference 
 import { signOut } from 'firebase/auth';
 import { auth } from './firebase-config'
@@ -32,39 +32,22 @@ function App() {
       console.error('Error signing out:', error);
     }
   };
-
+  
 
   if (!isAuth) { //user is not authenticated
     return ( //then shows user authentication process 
-      <div className = "App">
-        <header>
-          <h1>NormChat</h1>
-        </header>
-          <div>
-            <Auth setIsAuth = {setIsAuth} /> 
-          </div>
-          <p>Created by students for students to answer all UNC Charlotte-related questions.</p>
-      </div>
+      <Auth setIsAuth = {setIsAuth} /> 
     );
   }
-
+  
   return (
     <BrowserRouter>
       <Routes>
-        <Route path="/chat" element={<Chat room={room} />} />
-        <Route path="/conversation-list" element={<ConversationList />} />
+        <Route path="/" element={<Layout signUserOut={signUserOut} setIsAuth={setIsAuth} isAuth={isAuth}/>}>
+          <Route path="/chat" index element={<Chat room={room} />} />
+          <Route path="/conversation-list" element={<ConversationList />} />
+        </Route>
       </Routes>
-      {isAuth && (
-        <div className="sign-out">
-          <button onClick={signUserOut}> SIGN OUT </button>
-        </div>
-      )}
-      {!isAuth && (
-        <div className="App">
-          <Auth setIsAuth={setIsAuth} />
-          <p>Created by students for students to answer all UNC Charlotte-related questions.</p>
-        </div>
-      )}
     </BrowserRouter>
   );
 }
