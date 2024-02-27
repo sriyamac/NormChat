@@ -5,7 +5,7 @@ import { ConversationList } from './components/ConversationList.js';
 import { Chat } from "./components/Chat.js"
 import Cookies from "universal-cookie";
 import { BrowserRouter, Routes, Route, Link } from "react-router-dom"
-
+import {Layout} from  "./Layout.js"
 import { v4 as uuidv4 } from 'uuid'; //for new room reference 
 import { signOut } from 'firebase/auth';
 import { auth } from './firebase-config'
@@ -51,8 +51,10 @@ function App() {
   return (
     <BrowserRouter>
       <Routes>
-        <Route path="/" element={<Chat room={room} />} />
-        <Route path="/conversation-list" element={<ConversationList />} />
+        <Route path="/" element={<Layout />}>
+          <Route path="/" element={<Chat room={room} />} />
+          <Route path="/conversation-list" element={<ConversationList />} />
+        </Route>
       </Routes>
       {isAuth && (
         <div className="sign-out">
