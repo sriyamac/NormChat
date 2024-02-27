@@ -31,21 +31,18 @@ export const ConversationList = () => {
   return (
     <div className="chat-app">
       <div className="header">
-        <h1>Conversation List</h1>
+      <h1>Conversation List</h1>
       </div>
-
       <div className="messages">
+      <ul>
         {closedRooms.map((closedRoom) => (
-          <div className="collapse bg-base-200" key={closedRoom.id}>
-            <input type="radio" name="my-accordion-1" /> 
-            <div className="collapse-title text-xl font-medium">
-              Last Message: { closedRoom.lastMessage }
-            </div>
-            <div className="collapse-content"> 
-              {closedRoom.room}
-            </div>
-          </div>
+          <li key={closedRoom.id}>
+            <Link to={`/conversation-list/${closedRoom.id}`}>
+              <strong>{`Room:`}</strong> {closedRoom.room}, <strong>{`Last Message:`}</strong> {closedRoom.lastMessage}
+            </Link>
+          </li>
         ))}
+      </ul>
       </div>
     </div>
   );
