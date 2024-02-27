@@ -32,27 +32,20 @@ function App() {
       console.error('Error signing out:', error);
     }
   };
-
+  
 
   if (!isAuth) { //user is not authenticated
     return ( //then shows user authentication process 
-      <div className = "App">
-        <header>
-          <h1>NormChat</h1>
-        </header>
-          <div>
-            <Auth setIsAuth = {setIsAuth} /> 
-          </div>
-          <p>Created by students for students to answer all UNC Charlotte-related questions.</p>
-      </div>
+      <Auth setIsAuth = {setIsAuth} /> 
     );
   }
-
+  
   return (
     <BrowserRouter>
       <Routes>
         <Route path="/" element={<Layout signUserOut={signUserOut} setIsAuth={setIsAuth} isAuth={isAuth}/>}>
-          <Route path="/" element={<Chat room={room} />} />
+          <Route path="/auth" element={<Auth setIsAuth={setIsAuth}/>}/>
+          <Route path="/chat" index element={<Chat room={room} />} />
           <Route path="/conversation-list" element={<ConversationList />} />
         </Route>
       </Routes>

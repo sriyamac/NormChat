@@ -11,5 +11,4 @@ currently using [firebase](https://console.firebase.google.com/) as the DB for t
 5. Make the site look nice lol
 
 ### Router notes
-/ is chat as it is the default page that is rendered on login.
 elements that appear on every page go in Layout.js

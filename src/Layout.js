@@ -12,10 +12,7 @@ export const Layout = ({signUserOut, setIsAuth, isAuth}) => {
         </div>
       )}
       {!isAuth && (
-        <div className="App">
-          <Auth setIsAuth={setIsAuth} />
-          <p>Created by students for students to answer all UNC Charlotte-related questions.</p>
-        </div>
+        <Auth setIsAuth={setIsAuth} />
       )}
     </>
   );
