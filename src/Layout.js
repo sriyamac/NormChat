@@ -1,25 +1,19 @@
 import { Outlet, Link } from "react-router-dom";
+import { Auth } from './components/Auth.js';
 
-const Layout = () => {
+
+export const Layout = ({signUserOut, setIsAuth, isAuth}) => {
   return (
     <>
-      <nav>
-        <ul>
-          <li>
-            <Link to="/">Home</Link>
-          </li>
-          <li>
-            <Link to="/chat">Chat</Link>
-          </li>
-          <li>
-            <Link to="/conversation-list">Conversation List</Link>
-          </li>
-        </ul>
-      </nav>
-
       <Outlet />
+      {isAuth && (
+        <div className="sign-out">
+          <button onClick={signUserOut}> SIGN OUT </button>
+        </div>
+      )}
+      {!isAuth && (
+        <Auth setIsAuth={setIsAuth} />
+      )}
     </>
   );
 };
-
-export default Layout;

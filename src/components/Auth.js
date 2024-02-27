@@ -42,40 +42,49 @@ export const Auth = ({ setIsAuth, setRoom }) => {
   };
   
   return (
-    <div className="auth">
-      <Card className="w-[350px]">
-      <CardHeader>
-        <CardTitle> Sign In</CardTitle>
-        <CardDescription>Please Sign In with Google to Continue.</CardDescription>
-      </CardHeader>
-      <CardContent>
-        
-          <div  className="grid w-full items-center gap-4">
-            <div className="flex flex-col space-y-1.5">
-            <Button >   
-            <EnvelopeOpenIcon className="mr-5 h-4 w-4" />  
-            <p onClick={signInWithGoogle}>Sign in with Email</p>
-               </Button>
+    <div className = "App">
+        <header>
+          <h1>NormChat</h1>
+        </header>
+          <div>
+            <div className="auth">
+              <Card className="w-[350px]">
+              <CardHeader>
+                <CardTitle> Sign In</CardTitle>
+                <CardDescription>Please Sign In with Google to Continue.</CardDescription>
+              </CardHeader>
+              <CardContent>
+                
+                  <div  className="grid w-full items-center gap-4">
+                    <div className="flex flex-col space-y-1.5">
+                    <Button >   
+                    <EnvelopeOpenIcon className="mr-5 h-4 w-4" />  
+                    <p onClick={signInWithGoogle}>Sign in with Email</p>
+                      </Button>
 
-           
+                  
+                    
+                  
+
+                  
+                    </div>
             
-          
-
-           
+                    
+                  </div>
+                
+              </CardContent>
+              <CardFooter className="flex justify-between">
+              
+              </CardFooter>
+            </Card>
             </div>
-    
-            
-          </div>
-        
-      </CardContent>
-      <CardFooter className="flex justify-between">
-       
-      </CardFooter>
-    </Card>
+          <p>Created by students for students to answer all UNC Charlotte-related questions.</p>
+      </div>
  
       {/* <p> Sign In With Google To Continue </p>
       <button onClick={signInWithGoogle}> Sign In With Google </button>
     </div> */}
     </div>
+    
   );
 };
