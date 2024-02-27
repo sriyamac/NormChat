@@ -12,12 +12,6 @@ export const Chat = (props) => {
     const messagesRef = collection(db, "messages"); //reference to the specific DB collection
 
 
-    const handleLeaveChat = () => {
-    
-        // Redirect to the conversation list
-        window.location.href = "/conversation-list";
-      };
-    
 
 
     useEffect(() => { //firebase checks any changes in our collections
@@ -79,7 +73,7 @@ export const Chat = (props) => {
               Send
             </button>
           </form>
-          <button className="send-button" onClick={handleLeaveChat}>Close Chat</button>
+          <button className="send-button" onClick={() => window.location.href = "/conversation-list"}>Close Chat</button>
         </div>
       );
     };

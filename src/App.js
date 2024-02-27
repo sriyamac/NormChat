@@ -49,20 +49,25 @@ function App() {
   }
 
   return (
-    <> 
     <BrowserRouter>
-      <Link to="/"></Link>
       <Routes>
-        <Route path="/" element={<Chat room={room} />}></Route>
-        <Route path="/conversation-list" element={ <ConversationList /> }></Route>
+        <Route path="/chat" element={<Chat room={room} />} />
+        <Route path="/conversation-list" element={<ConversationList />} />
       </Routes>
+      {isAuth && (
+        <div className="sign-out">
+          <button onClick={signUserOut}> SIGN OUT </button>
+        </div>
+      )}
+      {!isAuth && (
+        <div className="App">
+          <Auth setIsAuth={setIsAuth} />
+          <p>Created by students for students to answer all UNC Charlotte-related questions.</p>
+        </div>
+      )}
     </BrowserRouter>
-    <div class= "send-button" className="sign-out"> 
-      <button onClick={signUserOut}> SIGN OUT </button>
-    </div>
-    </>
   );
-  }
+}
 
   
 

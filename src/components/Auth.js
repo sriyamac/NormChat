@@ -34,9 +34,7 @@ export const Auth = ({ setIsAuth, setRoom }) => {
       cookies.set("auth-token", result.user.refreshToken);
       setIsAuth(true); //setting authentication to true whenever the uesr logs in
 
-      const roomValue = "NormChat"; //name of the assigned chatbot
-      setRoom(roomValue);
-      window.location.href = `/chat/${roomValue}`; //redirecting to chatbot
+      window.location.href = "/chat"; //redirecting to chatbot
 
     } catch (x) { //trouble shooting
       console.error(x);
