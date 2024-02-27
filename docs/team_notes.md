@@ -12,3 +12,7 @@ currently using [firebase](https://console.firebase.google.com/) as the DB for t
 
 ### Router notes
 elements that appear on every page go in Layout.js
+
+### Daisy UI
+Docs: 
+https://daisyui.com/components/
