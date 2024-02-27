@@ -51,7 +51,7 @@ function App() {
   return (
     <BrowserRouter>
       <Routes>
-        <Route path="/chat" element={<Chat room={room} />} />
+        <Route path="/" element={<Chat room={room} />} />
         <Route path="/conversation-list" element={<ConversationList />} />
       </Routes>
       {isAuth && (

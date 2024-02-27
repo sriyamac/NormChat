@@ -9,3 +9,6 @@ currently using [firebase](https://console.firebase.google.com/) as the DB for t
 3. Sign-out feature
 4. Feedback page
 5. Make the site look nice lol
+
+### Router notes
+/ is chat as it is the default page that is rendered on login.
