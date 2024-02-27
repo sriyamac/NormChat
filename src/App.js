@@ -6,14 +6,22 @@ import { Chat } from "./components/Chat.js"
 import Cookies from "universal-cookie";
 import { BrowserRouter, Routes, Route, Link } from "react-router-dom"
 
+
+import { v4 as uuidv4 } from 'uuid'; //for new room reference 
+
+
 const cookies = new Cookies(); //get, set, and remove cookies from browser
 
 
 function App() { 
   const [isAuth, setIsAuth] = useState(cookies.get("auth-token")) //if there is an auth-token then set to true (you can check by inspecting page manually)
-  const [room, setRoom] = useState(null) //for joining different chatbots, implementation might be removed
+
+  //once a user logs in, uuidv4 will generate a unique room ID
+  const [room, setRoom] = useState(uuidv4()) //for joining different chatbots
 
   const roomInputRef = useRef(null)
+
+
 
   if (!isAuth) { //user is not authenticated
     return ( //then shows user authentication process 
@@ -33,7 +41,7 @@ function App() {
     <BrowserRouter>
       <Link to="/"></Link>
       <Routes>
-        <Route path="/" element={ <Chat room={room || "NormChat"} /> }></Route>
+        <Route path="/" element={<Chat room={room} />}></Route>
         <Route path="/conversation-list" element={ <ConversationList /> }></Route>
       </Routes>
     </BrowserRouter>

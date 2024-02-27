@@ -49,7 +49,7 @@ export const Chat = (props) => {
     return (
         <div className="chat-app">
           <div className="header">
-            <h1>Welcome to: {room.toUpperCase()}</h1>
+            <h1>Welcome to: {room.toUpperCase()}</h1> {/**room ID is displayed for debugging purposes, will change to "NormChat" before deployment*/}
           </div>
           <div className="messages">
             {messages.map((message) => (
