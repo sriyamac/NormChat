@@ -6,14 +6,33 @@ import { Chat } from "./components/Chat.js"
 import Cookies from "universal-cookie";
 import { BrowserRouter, Routes, Route, Link } from "react-router-dom"
 
+import { v4 as uuidv4 } from 'uuid'; //for new room reference 
+import { signOut } from 'firebase/auth';
+import { auth } from './firebase-config'
+
 const cookies = new Cookies(); //get, set, and remove cookies from browser
 
 
 function App() { 
   const [isAuth, setIsAuth] = useState(cookies.get("auth-token")) //if there is an auth-token then set to true (you can check by inspecting page manually)
-  const [room, setRoom] = useState(null) //for joining different chatbots, implementation might be removed
+
+  //once a user logs in, uuidv4 will generate a unique room ID
+  const [room, setRoom] = useState(uuidv4()) //for joining different chatbots
 
   const roomInputRef = useRef(null)
+
+
+  const signUserOut = async () => {
+    try {
+      await signOut(auth);
+      cookies.remove("auth-token");
+      setIsAuth(false);
+      setRoom(null);
+    } catch (error) {
+      console.error('Error signing out:', error);
+    }
+  };
+
 
   if (!isAuth) { //user is not authenticated
     return ( //then shows user authentication process 
@@ -31,14 +50,26 @@ function App() {
 
   return (
     <BrowserRouter>
-      <Link to="/"></Link>
       <Routes>
-        <Route path="/" element={ <Chat room={room || "NormChat"} /> }></Route>
-        <Route path="/conversation-list" element={ <ConversationList /> }></Route>
+        <Route path="/chat" element={<Chat room={room} />} />
+        <Route path="/conversation-list" element={<ConversationList />} />
       </Routes>
+      {isAuth && (
+        <div className="sign-out">
+          <button onClick={signUserOut}> SIGN OUT </button>
+        </div>
+      )}
+      {!isAuth && (
+        <div className="App">
+          <Auth setIsAuth={setIsAuth} />
+          <p>Created by students for students to answer all UNC Charlotte-related questions.</p>
+        </div>
+      )}
     </BrowserRouter>
   );
-  }
+}
+
+  
 
     //IMPLEMENTATION BELOW: POSSIBLE ROOM BEFORE ENTERING CHAT
   // return  <div> { room ? ( //if user is authenticated, redircts to chat

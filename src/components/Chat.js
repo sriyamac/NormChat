@@ -12,6 +12,9 @@ export const Chat = (props) => {
     
     const messagesRef = collection(db, "messages"); //reference to the specific DB collection
 
+
+
+
     useEffect(() => { //firebase checks any changes in our collections
         const queryMessages = query( //checks if room is the same as static room name and makes a query
             messagesRef,
@@ -46,22 +49,31 @@ export const Chat = (props) => {
     };
 
     return (
-    <div className = "chat-app">
-        <div className = "header"> 
-            <h1>{room}</h1>
+        <div className="chat-app">
+          <div className="header">
+            <h1>Room ID: {room.toUpperCase()}</h1> {/**room ID is displayed for debugging purposes, will change to "NormChat" before deployment*/}
             <Link to="/conversation-list">Go to Conversation List</Link>
-        </div>
-        <div> {" "}{messages.map((message) => <h1> {message.text} </h1>)}</div>
-        <form onSubmit = {handleSubmit} className = "new-message-form"> 
-            <input 
-            className  = "new-message-input"
-            placeholder = "Type message here..."
-            onChange = {(e) => setNewMessage(e.target.value)} //sets new message to be equal to what the input is currently
+          </div>
+          <div className="messages">
+            {messages.map((message) => (
+              <div key={message.id} className="message">
+                <span className="user">{message.user}:</span> {message.text}
+              </div>
+            ))}
+          </div>
+          <form onSubmit={handleSubmit} className="new-message-form">
+            <input
+              type="text"
+              value={newMessage}
+              onChange={(event) => setNewMessage(event.target.value)}
+              className="new-message-input"
+              placeholder="Type your message here..."
             />
-            <button type = "sumbit" className = "send-button">
-                Send
+            <button type="submit" className="send-button">
+              Send
             </button>
-        </form>
-     </div>
-    );
-};
+          </form>
+          <button className="send-button" onClick={() => window.location.href = "/conversation-list"}>Close Chat</button>
+        </div>
+      );
+    };
