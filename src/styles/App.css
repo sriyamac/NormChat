@@ -1,3 +1,15 @@
+:root {
+  --primary-color: #005035;
+  --secondary-color: #A49665;
+  --tertiary-color: #FFFFFF;
+  --quaternary-color: #000;
+
+}
+
+.page-container {
+  height: 100%;
+}
+
 body {
   padding: 0;
   margin: 0;
@@ -9,17 +21,60 @@ body {
   width: 100vw;
   height: 100vh;
   flex-direction: column;
-  font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
-.app-header {
-  text-align: center;
-  background-color: #2d651d;
-  color: white;
+.header {
+
+
+  background-color: var(--tertiary-color);
+  color: var(--primary-color);
   width: 100%;
+  height: 100px;
+  border-bottom: solid 2px #005035;
+  display: flex;
+  position: fixed;
+  top: 0;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.title_div {
+  align-self: center;
+  font-size: var(--h4);
+  text-align: center;
+
+
+}
+
+
+
+
+.auth-card {
+  position: relative;
+  margin-top: 9rem;
+}
+
+.logo_div {
+  display: flex;
+  flex-direction: row;
+  position: fixed;
+
+  left: 0;
+  /* margin-bottom: 4rem; */
+  font-size: var(--h5);
+  justify-content: space-between;
+}
+
+.logo {
+  height: 80px;
+  width: auto;
+  position: relative;
 }
 
 .app-container {
+  position: relative;
   margin-top: 50px;
 }
 
@@ -34,6 +89,7 @@ body {
   margin-bottom: 20px;
 }
 
+
 .room input {
   width: 200px;
   height: 30px;
@@ -44,6 +100,7 @@ body {
   text-align: center;
   margin: 5px;
 }
+
 .room button {
   width: 210px;
   height: 40px;
@@ -73,12 +130,9 @@ body {
   overflow: hidden;
   border: 2px solid #2d651d;
 }
-.header {
-  background-color: #2d651d;
-  color: white;
-  width: 100%;
-  text-align: center;
-}
+
+
+
 .messages {
   display: flex;
   flex-direction: column;
