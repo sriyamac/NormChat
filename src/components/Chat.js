@@ -47,21 +47,29 @@ export const Chat = (props) => {
     };
 
     return (
-    <div className = "chat-app">
-        <div className = "header"> 
-            <h1>{room}</h1>
-        </div>
-        <div> {" "}{messages.map((message) => <h1> {message.text} </h1>)}</div>
-        <form onSubmit = {handleSubmit} className = "new-message-form"> 
-            <input 
-            className  = "new-message-input"
-            placeholder = "Type message here..."
-            onChange = {(e) => setNewMessage(e.target.value)} //sets new message to be equal to what the input is currently
+        <div className="chat-app">
+          <div className="header">
+            <h1>Welcome to: {room.toUpperCase()}</h1>
+          </div>
+          <div className="messages">
+            {messages.map((message) => (
+              <div key={message.id} className="message">
+                <span className="user">{message.user}:</span> {message.text}
+              </div>
+            ))}
+          </div>
+          <form onSubmit={handleSubmit} className="new-message-form">
+            <input
+              type="text"
+              value={newMessage}
+              onChange={(event) => setNewMessage(event.target.value)}
+              className="new-message-input"
+              placeholder="Type your message here..."
             />
-            <button type = "sumbit" className = "send-button">
-                Send
+            <button type="submit" className="send-button">
+              Send
             </button>
-        </form>
-     </div>
-    );
-};
+          </form>
+        </div>
+      );
+    };
