@@ -51,7 +51,7 @@ function App() {
   return (
     <BrowserRouter>
       <Routes>
-        <Route path="/" element={<Layout signUserOut={signUserOut} setIsAuth={setIsAuth} Auth={Auth} isAuth={isAuth}/>}>
+        <Route path="/" element={<Layout signUserOut={signUserOut} setIsAuth={setIsAuth} isAuth={isAuth}/>}>
           <Route path="/" element={<Chat room={room} />} />
           <Route path="/conversation-list" element={<ConversationList />} />
         </Route>
