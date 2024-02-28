@@ -10,17 +10,17 @@ import { Input } from "../components/ui/input";
 import { Link } from "react-router-dom";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "../components/ui/select";
 
-const cookies = new Cookies();
+const cookies = new Cookies(); //get, set, and remove cookies from browser
 
 export const Auth = ({ setIsAuth, setRoom }) => {
   const signInWithGoogle = async () => {
     try {
-      const result = await signInWithPopup(auth, provider);
+      const result = await signInWithPopup(auth, provider); //logged-in user's info stored in result
       cookies.set("auth-token", result.user.refreshToken);
-      setIsAuth(true);
-      window.location.href = "/chat";
+      setIsAuth(true);  //setting authentication to true whenever the uesr logs in
+      window.location.href = "/chat"; //redirecting to chatbot
     } catch (error) {
-      console.error(error);
+      console.error(error); //trouble shooting
     }
   };
   
@@ -33,11 +33,10 @@ export const Auth = ({ setIsAuth, setRoom }) => {
         <Card className="auth-card">
           <div className="card-header">
             <h2>Sign In</h2>
-            <p>Please Sign In with Google to Continue.</p>
           </div>
           <div className="card-content">
             <Button variant={buttonVariants.primary} onClick={signInWithGoogle}>
-              Sign in with Google
+             Please Sign In with Google to Continue
             </Button>
             <div className="separator">or</div>
             <Input type="email" placeholder="Enter your email" />
