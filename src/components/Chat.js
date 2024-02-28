@@ -52,7 +52,6 @@ export const Chat = (props) => {
         <div className="chat-app">
           <div className="header">
             <h1>Room ID: {room.toUpperCase()}</h1> {/**room ID is displayed for debugging purposes, will change to "NormChat" before deployment*/}
-            <Link to="/conversation-list">Go to Conversation List</Link>
           </div>
           <div className="messages">
             {messages.map((message) => (
