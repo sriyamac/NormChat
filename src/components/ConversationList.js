@@ -33,20 +33,25 @@ export const ConversationList = () => {
   }, []);
 
   return (
-    <div className="chat-app">
-      <div className="header">
-      <h1>Conversation List</h1>
+    <div className="container">
+      <div className="p-3 flex flex-row">
+        <div>
+          <p>Conversation List</p>
+        </div>
+        <div>
+          <button className="btn btn-success">Success</button>
+        </div>
       </div>
-      <div className="messages">
-      <ul>
-        {closedRooms.map((closedRoom) => (
-          <li key={closedRoom.id}>
-            <Link to={`/conversation-list/${closedRoom.id}`}>
-              <strong>{`Room:`}</strong> {closedRoom.room}, <strong>{`Last Message:`}</strong> {closedRoom.lastMessage}
-            </Link>
-          </li>
-        ))}
-      </ul>
+      <div>
+        <ul>
+          {closedRooms.map((closedRoom) => (
+            <li key={closedRoom.id}>
+              <Link to={`/conversation-list/${closedRoom.id}`}>
+                <strong>{`Room:`}</strong> {closedRoom.room}, <strong>{`Last Message:`}</strong> {closedRoom.lastMessage}
+              </Link>
+            </li>
+          ))}
+        </ul>
       </div>
     </div>
   );
