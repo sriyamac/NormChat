@@ -94,9 +94,10 @@ button:disabled {
   color: #999999; 
 }
 
-
-
-
+/* Conversation List styling */
+.room-card:hover {
+  background-color: #f8f8f8;
+}
 
 /*body {
   padding: 0;
