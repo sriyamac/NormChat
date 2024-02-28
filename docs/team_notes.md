@@ -21,3 +21,11 @@ elements that appear on every page go in Layout.js
 
 ### Daisy UI
 Docs: https://daisyui.com/components/
+
+### Colors
+The following colors are in the tailwind theme:
+        'niner-green': '#00703c',
+        'theme-bg': '#f8f8f8',
+        'secondary-text': '#666666',
+        'primary-text': '#333333',
+

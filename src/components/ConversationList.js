@@ -33,25 +33,25 @@ export const ConversationList = () => {
   }, []);
 
   return (
-    <div className="container">
-      <div className="p-3 flex flex-row">
+    <div className="bg-[#f8f8f8] p-1">
+      <div className="p-3 flex flex-row justify-between text-2xl">
         <div>
           <p>Conversation List</p>
+          <input type="text" placeholder="Type here" className="input input-bordered w-full max-w-xs" />
+
         </div>
         <div>
-          <button className="btn btn-success">Success</button>
+          <button className="btn btn-success">New Chat</button>
         </div>
       </div>
-      <div>
-        <ul>
-          {closedRooms.map((closedRoom) => (
-            <li key={closedRoom.id}>
-              <Link to={`/conversation-list/${closedRoom.id}`}>
-                <strong>{`Room:`}</strong> {closedRoom.room}, <strong>{`Last Message:`}</strong> {closedRoom.lastMessage}
-              </Link>
-            </li>
-          ))}
-        </ul>
+      <div className='container'>
+        {closedRooms.map((closedRoom) => (
+          <div key={closedRoom.id} className='p-2 m-1.5 bg-white rounded shadow-sm'>
+            <Link to={`/conversation-list/${closedRoom.id}`}>
+              <strong>{`Room:`}</strong> {closedRoom.room}, <strong>{`Last Message:`}</strong> {closedRoom.lastMessage}
+            </Link>
+          </div>
+        ))}
       </div>
     </div>
   );
