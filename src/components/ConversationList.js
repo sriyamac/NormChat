@@ -1,20 +1,24 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { collection, query, orderBy, getDocs, limit } from 'firebase/firestore';
-import { db } from '../firebase-config';
+import { db, auth } from '../firebase-config';
 
 export const ConversationList = () => {
   const [closedRooms, setClosedRooms] = useState([]);
-
+  
   useEffect(() => {
     const fetchClosedRooms = async () => {
+      const user = auth.currentUser;
+      if (!user) return;
+
       const roomsCollection = collection(db, 'messages');
-      const closedRoomsQuery = query(roomsCollection, orderBy('createdAt', 'desc'), limit(1));
+      const closedRoomsQuery = query(roomsCollection, orderBy('createdAt', 'desc'));
 
       try {
         const closedRoomsSnapshot = await getDocs(closedRoomsQuery);
         const closedRoomsData = closedRoomsSnapshot.docs.map((doc) => ({
           id: doc.id,
+          user: doc.data.user,
           room: doc.data().room, //room reference 
           lastMessage: doc.data().text, // the last message the user sent in the room
         }));
