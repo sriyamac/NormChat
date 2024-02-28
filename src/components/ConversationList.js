@@ -5,7 +5,7 @@ import { db, auth } from '../firebase-config';
 
 export const ConversationList = () => {
   const [closedRooms, setClosedRooms] = useState([]);
-  
+
   useEffect(() => {
     const fetchClosedRooms = async () => {
       const user = auth.currentUser;
@@ -32,6 +32,7 @@ export const ConversationList = () => {
     fetchClosedRooms();
   }, []);
 
+  // New chat button works, but it does not make a new chat. It directs to the chat page with the same chat.
   return (
     <div className="">
       <div className="p-3 flex flex-row justify-between shadow-sm items-center">
@@ -40,7 +41,7 @@ export const ConversationList = () => {
         </div>
         <div>
           <button className="btn br-1">Feedback</button>
-          <button className="btn btn-success">New Chat</button>
+          <Link to="/chat"><button className="btn btn-success">New Chat</button></Link>
         </div>
       </div>
       <div className='container pt-2 pb-2'>
