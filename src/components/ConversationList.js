@@ -5,7 +5,7 @@ import { db, auth } from '../firebase-config';
 
 export const ConversationList = () => {
   const [closedRooms, setClosedRooms] = useState([]);
-  
+
   useEffect(() => {
     const fetchClosedRooms = async () => {
       const user = auth.currentUser;
@@ -32,21 +32,27 @@ export const ConversationList = () => {
     fetchClosedRooms();
   }, []);
 
+  // New chat button works, but it does not make a new chat. It directs to the chat page with the same chat.
   return (
-    <div className="chat-app">
-      <div className="header">
-      <h1>Conversation List</h1>
+    <div className="">
+      <div className="p-3 flex flex-row justify-between shadow-sm items-center">
+        <div className='text-2xl'>
+          <p>Conversation List</p>
+        </div>
+        <div>
+          <button className="btn br-1">Feedback</button>
+          <Link to="/chat"><button className="btn btn-success">New Chat</button></Link>
+        </div>
       </div>
-      <div className="messages">
-      <ul>
+      <div className='container pt-2 pb-2'>
         {closedRooms.map((closedRoom) => (
-          <li key={closedRoom.id}>
-            <Link to={`/conversation-list/${closedRoom.id}`}>
-              <strong>{`Room:`}</strong> {closedRoom.room}, <strong>{`Last Message:`}</strong> {closedRoom.lastMessage}
+          <div key={closedRoom.id} className='p-2.5 m-2 rounded shadow-sm border room-card'>
+            <Link to={`/conversation-list/${closedRoom.id}`} className='grid grid-cols-2'>
+              <div><strong>Last Message: </strong>{closedRoom.lastMessage}</div>
+              <div>Room: {closedRoom.room}</div>
             </Link>
-          </li>
+          </div>
         ))}
-      </ul>
       </div>
     </div>
   );

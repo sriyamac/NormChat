@@ -8,10 +8,24 @@ currently using [firebase](https://console.firebase.google.com/) as the DB for t
 2. Creating a Conversations list that is linked to the chatbox after user closes
 3. Sign-out feature
 4. Feedback page
-5. Make the site look nice lol
+5. Make the site look nice lol 
 
-### Router notes
+  \+ update html to include tailwind elements
+
+### React Router
+Tutorial: https://www.w3schools.com/react/react_router.asp
+Docs: (https://reactrouter.com/en/main/start/overview)https://reactrouter.com/en/main/start/overview
+Navigate from one page to another: https://stackoverflow.com/questions/37295377/how-to-navigate-from-one-page-to-another-in-react-js
+
 elements that appear on every page go in Layout.js
 
 ### Daisy UI
 Docs: https://daisyui.com/components/
+
+### Colors
+The following colors are in the tailwind theme:
+        'niner-green': '#00703c',
+        'theme-bg': '#f8f8f8',
+        'secondary-text': '#666666',
+        'primary-text': '#333333',
+

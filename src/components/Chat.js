@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import { addDoc, serverTimestamp, collection, onSnapshot, query, where, orderBy } from 'firebase/firestore'; //adds doc to collection
 import { db, auth } from "../firebase-config";
+import { Link } from "react-router-dom"
 import "../styles/App.css";
 
 export const Chat = (props) => {
@@ -31,8 +32,6 @@ export const Chat = (props) => {
   
       return () => unsuscribe(); //cleaning up function
     }, []);
-  
-
 
     const handleSubmit = async (e) => { //messages are created
         e.preventDefault();
@@ -73,7 +72,7 @@ export const Chat = (props) => {
               Send
             </button>
           </form>
-          <button className="send-button" onClick={() => window.location.href = "/conversation-list"}>Close Chat</button>
+          <button className="send-button"><Link to="/conversation-list">Close Chat</Link></button>
         </div>
       );
     };

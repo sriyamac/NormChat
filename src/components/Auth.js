@@ -32,16 +32,16 @@ export const Auth = ({ setIsAuth, setRoom }) => {
       <div className="auth-content">
         <Card className="auth-card">
           <div className="card-header">
-            <h2>Sign In</h2>
+            <h2 className="pb-2.5 text-lg">Sign In</h2>
           </div>
           <div className="card-content">
-            <Button variant={buttonVariants.primary} onClick={signInWithGoogle}>
-             Please Sign In with Google to Continue
-            </Button>
+            <button className="btn btn-success" onClick={signInWithGoogle}>Sign in with Google</button>
             <div className="separator">or</div>
-            <Input type="email" placeholder="Enter your email" />
-            <Input type="password" placeholder="Enter your password" />
-            <Button variant={buttonVariants.secondary}>Sign in with Email</Button>
+            <form className="mb-1">
+              <input type="email" placeholder="Email" className="input input-bordered w-full max-w-xs mb-1 p-1.5 border rounded" />
+              <input type="password" placeholder="Password" className="input input-bordered w-full max-w-xs p-1.5 border rounded" />
+            </form>
+            <button className="btn btn-success btn-wide">Sign in with Email</button>
           </div>
           <div className="card-footer">
             <p>Created by students for students to answer all UNC Charlotte-related questions.</p>
