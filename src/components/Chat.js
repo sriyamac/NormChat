@@ -72,7 +72,7 @@ export const Chat = (props) => {
               Send
             </button>
           </form>
-          <button className="send-button" onClick={() => window.location.href = "/conversation-list"}>Close Chat</button>
+          <button className="send-button"><Link to="/conversation-list">Close Chat</Link></button>
         </div>
       );
     };
