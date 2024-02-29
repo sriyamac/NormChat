@@ -5,7 +5,6 @@ import { db, auth } from '../firebase-config';
 
 export const ConversationList = ({setRoom}) => {
   const [closedRooms, setClosedRooms] = useState([]);
-
   useEffect(() => {
     const fetchClosedRooms = async () => {
       const user = auth.currentUser;
@@ -32,7 +31,7 @@ export const ConversationList = ({setRoom}) => {
     fetchClosedRooms();
   }, []);
 
-  // New chat button works, but it does not make a new chat. It directs to the chat page with the same chat.
+  // New chat does not make a new chat. Unsure of how to make it create a new room id
   return (
     <div className="">
       <div className="p-3 flex flex-row justify-between shadow-sm items-center">
@@ -41,13 +40,13 @@ export const ConversationList = ({setRoom}) => {
         </div>
         <div>
           <button className="btn br-1">Feedback</button>
-          <Link to="/chat/:id"><button className="btn btn-success">New Chat</button></Link>
+          <Link to="/chat/idgoeshere"><button className="btn btn-success">New Chat</button></Link>
         </div>
       </div>
       <div className='container pt-2 pb-2'>
         {closedRooms.map((closedRoom) => (
           <div key={closedRoom.id} className='p-2.5 m-2 rounded shadow-sm border room-card'>
-            <Link to={`/conversation-list/${closedRoom.id}`} className='grid grid-cols-2'>
+            <Link to={`/chat/${closedRoom.id}`} className='grid grid-cols-2'>
               <div><strong>Last Message: </strong>{closedRoom.lastMessage}</div>
               <div>Room: {closedRoom.room}</div>
             </Link>
