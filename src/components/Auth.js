@@ -32,7 +32,7 @@ export const Auth = ({ setIsAuth, setRoom }) => {
       <div className="auth-content">
         <Card className="auth-card">
           <div className="card-header">
-            <h2 className="pb-2.5 text-lg">Sign In</h2>
+            <h2 className="pb-2.5 text-lg">Sign In to use NormChat</h2>
           </div>
           <div className="card-content">
             <button className="btn btn-success" onClick={signInWithGoogle}>Sign in with Google</button>
