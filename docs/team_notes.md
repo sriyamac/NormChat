@@ -23,7 +23,7 @@ elements that appear on every page go in Layout.js
 Docs: https://daisyui.com/components/
 
 ### Colors
-The following colors are in the tailwind theme:
+The following colors are in the theme:
         'niner-green': '#00703c',
         'theme-bg': '#f8f8f8',
         'secondary-text': '#666666',
