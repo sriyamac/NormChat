@@ -29,3 +29,5 @@ The following colors are in the tailwind theme:
         'secondary-text': '#666666',
         'primary-text': '#333333',
 
+### Tailwind Documentation
+https://tailwindcss.com/docs/installation
