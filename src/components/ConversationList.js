@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import { collection, query, orderBy, getDocs, limit } from 'firebase/firestore';
 import { db, auth } from '../firebase-config';
 
-export const ConversationList = () => {
+export const ConversationList = ({setRoom}) => {
   const [closedRooms, setClosedRooms] = useState([]);
 
   useEffect(() => {
@@ -41,7 +41,7 @@ export const ConversationList = () => {
         </div>
         <div>
           <button className="btn br-1">Feedback</button>
-          <Link to="/chat"><button className="btn btn-success">New Chat</button></Link>
+          <Link to="/chat/:id"><button className="btn btn-success">New Chat</button></Link>
         </div>
       </div>
       <div className='container pt-2 pb-2'>
