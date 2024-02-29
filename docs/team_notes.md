@@ -19,7 +19,7 @@ Navigate from one page to another: https://stackoverflow.com/questions/37295377/
 
 elements that appear on every page go in Layout.js
 
-### Daisy UI
+### Daisy UI Documentation
 Docs: https://daisyui.com/components/
 
 ### Colors
