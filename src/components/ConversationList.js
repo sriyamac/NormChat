@@ -40,7 +40,7 @@ export const ConversationList = ({setRoom}) => {
         </div>
         <div>
           <button className="btn br-1">Feedback</button>
-          <Link to="/chat/idgoeshere"><button className="btn btn-success">New Chat</button></Link>
+          <Link to="/new-chat"><button className="btn btn-success">New Chat</button></Link>
         </div>
       </div>
       <div className='container pt-2 pb-2'>

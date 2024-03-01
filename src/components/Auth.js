@@ -18,7 +18,7 @@ export const Auth = ({ setIsAuth, setRoom }) => {
       const result = await signInWithPopup(auth, provider); //logged-in user's info stored in result
       cookies.set("auth-token", result.user.refreshToken);
       setIsAuth(true);  //setting authentication to true whenever the uesr logs in
-      window.location.href = "/chat"; //redirecting to chatbot
+      window.location.href = "/new-chat"; //redirecting to new-chat to create new chat
     } catch (error) {
       console.error(error); //trouble shooting
     }
