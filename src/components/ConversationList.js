@@ -1,14 +1,21 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { collection, query, orderBy, getDocs, limit } from 'firebase/firestore';
-import { db, auth } from '../firebase-config';
+import { db } from '../firebase-config';
+import { getAuth } from 'firebase/auth'
 
 export const ConversationList = () => {
   const [closedRooms, setClosedRooms] = useState([]);
 
   useEffect(() => {
-    const fetchClosedRooms = async () => {
+    const fetchUser = async () => {
+      const auth = getAuth()
       const user = auth.currentUser;
+      return user;
+    }
+
+    const fetchClosedRooms = async () => {
+      const user = await fetchUser();
       if (!user) return;
 
       const roomsCollection = collection(db, 'messages');
@@ -28,7 +35,7 @@ export const ConversationList = () => {
         console.error('Error fetching closed rooms:', error);
       }
     };
-
+    console.log("fetching...")
     fetchClosedRooms();
   }, []);
 
