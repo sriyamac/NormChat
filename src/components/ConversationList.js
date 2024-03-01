@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import { collection, query, orderBy, getDocs, limit } from 'firebase/firestore';
 import { db, auth } from '../firebase-config';
 
-export const ConversationList = ({setRoom}) => {
+export const ConversationList = () => {
   const [closedRooms, setClosedRooms] = useState([]);
   useEffect(() => {
     const fetchClosedRooms = async () => {
