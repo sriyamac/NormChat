@@ -1,8 +1,10 @@
 import { useState, useEffect } from "react";
 import { addDoc, serverTimestamp, collection, onSnapshot, query, where, orderBy } from 'firebase/firestore'; //adds doc to collection
 import { db, auth } from "../firebase-config";
-import { Link, useParams } from "react-router-dom"
+
 import "../styles/App.css";
+
+import { Link, useParams } from "react-router-dom"
 import { Card } from "../components/ui/card";
 
 export const Chat = (isAuth) => {
