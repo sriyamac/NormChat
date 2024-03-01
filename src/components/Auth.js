@@ -27,7 +27,7 @@ export const Auth = ({ setIsAuth, setRoom }) => {
   return (
     <div className="auth-container">
       <header className="header">
-        <h1>Testing</h1>
+        <h1>Testing </h1>
       </header>
       <div className="auth-content">
         <Card className="auth-card">
