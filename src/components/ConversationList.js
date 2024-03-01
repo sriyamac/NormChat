@@ -47,7 +47,9 @@ export const ConversationList = () => {
           <p>Conversation List</p>
         </div>
         <div>
-          <button className="btn br-1">Feedback</button>
+          <Link to="/feedback" className='mr-2'>
+            <button className="btn br-1">Feedback</button>
+          </Link>
           <Link to="/chat"><button className="btn btn-success">New Chat</button></Link>
         </div>
       </div>

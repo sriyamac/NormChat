@@ -9,6 +9,7 @@ import {Layout} from  "./Layout.js"
 import { v4 as uuidv4 } from 'uuid'; //for new room reference 
 import { signOut } from 'firebase/auth';
 import { auth } from './firebase-config'
+import { Feedback } from './components/Feedback.js'
 
 const cookies = new Cookies(); //get, set, and remove cookies from browser
 
@@ -46,6 +47,7 @@ function App() {
         <Route path="/" element={<Layout signUserOut={signUserOut} setIsAuth={setIsAuth} isAuth={isAuth}/>}>
           <Route path="/chat" index element={<Chat room={room} />} />
           <Route path="/conversation-list" element={<ConversationList />} />
+          <Route path="/feedback" element={<Feedback />} />
         </Route>
       </Routes>
     </BrowserRouter>
