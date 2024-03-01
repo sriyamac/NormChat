@@ -6,8 +6,8 @@ body {
 
 
 .header {
-  background-color: #00703c;
-  color: #ffffff;
+  background-color: #00703c; 
+  color: #ffffff; 
   padding: 20px;
   text-align: center;
 }
@@ -22,7 +22,7 @@ body {
   justify-content: center;
   align-items: center;
   height: 100vh;
-  background-color: #f0f0f0;
+  background-color: #f0f0f0; 
 }
 
 .auth-content {
@@ -44,12 +44,12 @@ body {
 
 .card-header h2 {
   margin: 0;
-  color: #333333;
+  color: #333333; 
 }
 
 .card-header p {
   margin: 0;
-  color: #666666;
+  color: #666666; 
 }
 
 .card-content {
@@ -60,7 +60,7 @@ body {
 .separator {
   text-align: center;
   margin: 10px 0;
-  color: #666666;
+  color: #666666; 
 }
 
 .card-footer {
@@ -70,7 +70,7 @@ body {
 .card-footer p {
   font-size: 12px;
   text-align: center;
-  color: #666666;
+  color: #666666; 
 }
 
 button {
@@ -81,41 +81,23 @@ button {
   font-size: 16px;
   font-weight: bold;
   transition: background-color 0.3s ease;
-  position: relative;
   /*margin-bottom: 10px; */
 }
 
 button:hover {
-  background-color: #005395;
-  color: #ffffff;
+  background-color: #005395; 
+  color: #ffffff; 
 }
 
 button:disabled {
-  background-color: #cccccc;
-  color: #999999;
+  background-color: #cccccc; 
+  color: #999999; 
 }
 
 /* Conversation List styling */
 .room-card:hover {
   background-color: #f8f8f8;
 }
-
-.messagesCard {
-  align-self: center;
-}
-
-.chat-app {
-  display: flex;
-  flex-direction: column;
-}
-
-.new-message-form input {
-  display: flex;
-  width: 100%;
-  padding: 10px;
-  position: relative;
-}
-
 
 /*body {
   padding: 0;
