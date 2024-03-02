@@ -87,7 +87,7 @@ export const Chat = (isAuth) => {
           </button>
         </form>
       </div>
-      <button className="send-button" onClick={() => window.location.href = "/conversation-list"}>Close Chat</button> {/**removed the UI, no implementation of redirction */}
+      <button className="send-button close"><Link to="/conversation-list">Close Chat</Link></button>
     </div >
   );
 };

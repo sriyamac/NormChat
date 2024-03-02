@@ -29,5 +29,14 @@ The following colors are in the theme:
         'secondary-text': '#666666',
         'primary-text': '#333333',
 
+### Retrieving User from Auth
+To get the user from auth in a component:
+~~~
+import { getAuth } from "firebase/auth";
+
+const auth = getAuth();
+const user = auth.currentUser;
+~~~
+
 ### Tailwind Documentation
 https://tailwindcss.com/docs/installation
