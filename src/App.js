@@ -1,14 +1,17 @@
 import React, { useState, useRef } from 'react';
-import "./styles/App.css";
-import { Auth } from './components/Auth.js';
-import { ConversationList } from './components/ConversationList.js';
-import { Chat } from "./components/Chat.js"
 import Cookies from "universal-cookie";
-import { BrowserRouter, Routes, Route, Link } from "react-router-dom"
-import {Layout} from  "./Layout.js"
+import { BrowserRouter, Routes, Route } from "react-router-dom"
 import { v4 as uuidv4 } from 'uuid'; //for new room reference 
 import { signOut } from 'firebase/auth';
 import { auth } from './firebase-config'
+
+import "./styles/App.css";
+
+import { Auth } from './components/Auth.js';
+import { ConversationList } from './components/ConversationList.js';
+import { Chat } from "./components/Chat.js"
+import { NewChat } from './components/newChat.js'
+import { Layout } from  "./Layout.js"
 
 const cookies = new Cookies(); //get, set, and remove cookies from browser
 
@@ -21,7 +24,6 @@ function App() {
 
   const roomInputRef = useRef(null)
 
-
   const signUserOut = async () => {
     try {
       await signOut(auth);
@@ -32,20 +34,19 @@ function App() {
       console.error('Error signing out:', error);
     }
   };
-  
 
   if (!isAuth) { //user is not authenticated
-    return ( //then shows user authentication process 
-      <Auth setIsAuth = {setIsAuth} /> 
-    );
+    window.location.href = "/auth";
   }
   
   return (
     <BrowserRouter>
       <Routes>
         <Route path="/" element={<Layout signUserOut={signUserOut} setIsAuth={setIsAuth} isAuth={isAuth}/>}>
-          <Route path="/chat" index element={<Chat room={room} />} />
-          <Route path="/conversation-list" element={<ConversationList />} />
+          <Route path="/auth" element={<Auth setIsAuth = {setIsAuth} />} />
+          <Route path='/new-chat' element={<NewChat />} />
+          <Route path="/chat/:room" element={<Chat isAuth={isAuth}/>} />
+          <Route path="/conversation-list" element={<ConversationList setRoom={setRoom} />} />
         </Route>
       </Routes>
     </BrowserRouter>

@@ -18,7 +18,7 @@ export const Auth = ({ setIsAuth, setRoom }) => {
       const result = await signInWithPopup(auth, provider); //logged-in user's info stored in result
       cookies.set("auth-token", result.user.refreshToken);
       setIsAuth(true);  //setting authentication to true whenever the uesr logs in
-      window.location.href = "/chat"; //redirecting to chatbot
+      window.location.href = "/new-chat"; //redirecting to new-chat to create new chat
     } catch (error) {
       console.error(error); //trouble shooting
     }
@@ -41,7 +41,7 @@ export const Auth = ({ setIsAuth, setRoom }) => {
               <input type="email" placeholder="Email" className="input input-bordered w-full max-w-xs mb-1 p-1.5 border rounded" />
               <input type="password" placeholder="Password" className="input input-bordered w-full max-w-xs p-1.5 border rounded" />
             </form>
-            <button className="btn btn-success btn-wide">Sign in with Email</button>
+            <button className="btn btn-success w-full">Sign in with Email</button>
           </div>
           <div className="card-footer">
             <p>Created by students for students to answer all UNC Charlotte-related questions.</p>
