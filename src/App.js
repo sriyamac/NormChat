@@ -1,4 +1,4 @@
-import React, { useState, useRef } from 'react';
+import React, { useState, useRef, useEffect } from 'react';
 import Cookies from "universal-cookie";
 import { BrowserRouter, Routes, Route } from "react-router-dom"
 import { v4 as uuidv4 } from 'uuid'; //for new room reference 
@@ -24,6 +24,11 @@ function App() {
 
   const roomInputRef = useRef(null)
 
+  useEffect(() => {
+    if (!isAuth) { //user is not authenticated
+      window.location.href = "/auth";
+    }
+  }, []);
 
   const signUserOut = async () => {
     try {
