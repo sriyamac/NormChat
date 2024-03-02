@@ -20,11 +20,11 @@ export const Feedback = () => {
           <form className="flex flex-column w-[70%] justify-center items-center w-[50%] border rounded p-4 shadow-sm">
             <label for="rating" className="text-lg">Rate NormChat</label>
             <div className="rating gap-1 mb-4 mt-2" id="rating">
-              <input type="radio" name="rating-1" className="mask mask-heart bg-red-400" />
-              <input type="radio" name="rating-2" className="mask mask-heart bg-red-400" />
               <input type="radio" name="rating-3" className="mask mask-heart bg-red-400" />
-              <input type="radio" name="rating-4" className="mask mask-heart bg-red-400" />
-              <input type="radio" name="rating-5" className="mask mask-heart bg-red-400" />
+              <input type="radio" name="rating-3" className="mask mask-heart bg-red-400" />
+              <input type="radio" name="rating-3" className="mask mask-heart bg-red-400" />
+              <input type="radio" name="rating-3" className="mask mask-heart bg-red-400" />
+              <input type="radio" name="rating-3" className="mask mask-heart bg-red-400" />
             </div>
             <label for="text-response" className="text-lg">Tell us what you think</label>
             <textarea className="textarea textarea-bordered p-1.5 h-40 w-[100%] mt-2 shadow-inner" id="text-response" placeholder="What do you think?"></textarea>
