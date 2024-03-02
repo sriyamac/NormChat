@@ -10,7 +10,7 @@ import "./styles/App.css";
 import { Auth } from './components/Auth.js';
 import { ConversationList } from './components/ConversationList.js';
 import { Chat } from "./components/Chat.js"
-import { NewChat } from './newChat.js'
+import { NewChat } from './components/newChat.js'
 import { Layout } from  "./Layout.js"
 
 const cookies = new Cookies(); //get, set, and remove cookies from browser

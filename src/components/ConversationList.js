@@ -7,6 +7,7 @@ import { getAuth } from 'firebase/auth'
 export const ConversationList = () => {
   const [closedRooms, setClosedRooms] = useState([]);
   useEffect(() => {
+    // get current user 
     const fetchUser = async () => {
       const auth = getAuth()
       const user = auth.currentUser;
@@ -17,6 +18,7 @@ export const ConversationList = () => {
       const user = await fetchUser();
       if (!user) return;
 
+      // get list of conversations
       const roomsCollection = collection(db, 'messages');
       const closedRoomsQuery = query(roomsCollection, orderBy('createdAt', 'desc'));
 
@@ -38,7 +40,6 @@ export const ConversationList = () => {
     fetchClosedRooms();
   }, []);
 
-  // New chat does not make a new chat. Unsure of how to make it create a new room id
   return (
     <div className="">
       <div className="p-3 flex flex-row justify-between shadow-sm items-center">

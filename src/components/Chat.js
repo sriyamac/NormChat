@@ -10,6 +10,7 @@ import { Card } from "../components/ui/card";
 export const Chat = (isAuth) => {
   // Check if user is logged in
   if (!isAuth) {
+    // if not, set these vars as undefined and empty and redirect to auth page
     room = undefined;
     setMessages([])
     window.location.href = "/auth";
