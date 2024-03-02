@@ -6,6 +6,7 @@ import "../styles/App.css";
 
 import { Link, useParams } from "react-router-dom"
 import { Card } from "../components/ui/card";
+import { SignOut } from "./SignOut";
 
 export const Chat = (isAuth) => {
   // Check if user is logged in
@@ -17,10 +18,10 @@ export const Chat = (isAuth) => {
   }
 
   // get room id from url parameter
-  const { room } = useParams(); 
+  const { room } = useParams();
   const [messages, setMessages] = useState([]); //in array
   const [newMessage, setNewMessage] = useState(""); //assigns what the user types in the input, keeping track of new messages being set in input
-  
+
   const messagesRef = collection(db, "messages"); //reference to the specific DB collection
 
   useEffect(() => { //firebase checks any changes in our collections
@@ -59,6 +60,7 @@ export const Chat = (isAuth) => {
   return (
 
     <div className="chat-app">
+      <SignOut />
 
       <div className="header">
         <h1>Room ID: {room.toUpperCase()}</h1> {/**room ID is displayed for debugging purposes, will change to "NormChat" before deployment*/}
@@ -74,21 +76,22 @@ export const Chat = (isAuth) => {
             ))}
 
           </div>
-        </Card>
-        <form onSubmit={handleSubmit} className="new-message-form">
-          <input
-            type="text"
-            value={newMessage}
-            onChange={(event) => setNewMessage(event.target.value)}
-            className="new-message-input"
-            placeholder="Type your message here..."
-          />
-          <button type="submit" className="send-button">
-            Send
-          </button>
-        </form>
-      </div>
-      <button className="send-button close"><Link to="/conversation-list">Close Chat</Link></button>
+
+          <form onSubmit={handleSubmit} className="new-message-form">
+            <input
+              type="text"
+              value={newMessage}
+              onChange={(event) => setNewMessage(event.target.value)}
+              className="new-message-input"
+              placeholder="Type your message here..."
+            />
+            <button type="submit" className="send-button">
+              Send
+            </button>
+          </form>
+
+          <button className=" close"><Link to="/conversation-list">Close Chat</Link></button>
+        </Card> </div>
     </div >
   );
 };

@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import { collection, query, orderBy, getDocs, limit } from 'firebase/firestore';
 import { db } from '../firebase-config';
 import { getAuth } from 'firebase/auth'
+import { SignOut } from './SignOut';
 
 export const ConversationList = () => {
   const [closedRooms, setClosedRooms] = useState([]);
@@ -42,6 +43,7 @@ export const ConversationList = () => {
 
   return (
     <div className="">
+      <SignOut />
       <div className="p-3 flex flex-row justify-between shadow-sm items-center">
         <div className='text-2xl'>
           <p>Conversation List</p>
