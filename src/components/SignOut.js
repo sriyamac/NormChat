@@ -11,7 +11,7 @@ import Cookies from 'universal-cookie'; //for setting cookies
 
 
 const cookies = new Cookies(); //get, set, and remove cookies from browser
-export const SignOut = () => {
+export const SignOut = ({ }) => {
 
 
   const [isAuth, setIsAuth] = useState(cookies.get("auth-token"))

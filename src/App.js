@@ -11,7 +11,9 @@ import { Auth } from './components/Auth.js';
 import { ConversationList } from './components/ConversationList.js';
 import { Chat } from "./components/Chat.js"
 import { NewChat } from './components/newChat.js'
-import { Layout } from "./components/SignOut.js"
+
+import Feedback from './components/Feedback';
+import { SignOut } from './components/SignOut';
 
 const cookies = new Cookies(); //get, set, and remove cookies from browser
 
@@ -24,16 +26,16 @@ function App() {
 
   const roomInputRef = useRef(null)
 
-  // const signUserOut = async () => {
-  //   try {
-  //     await signOut(auth);
-  //     cookies.remove("auth-token");
-  //     setIsAuth(false);
-  //     setRoom(null);
-  //   } catch (error) {
-  //     console.error('Error signing out:', error);
-  //   }
-  // };
+  const signUserOut = async () => {
+    try {
+      await signOut(auth);
+      cookies.remove("auth-token");
+      setIsAuth(false);
+      setRoom(null);
+    } catch (error) {
+      console.error('Error signing out:', error);
+    }
+  };
 
   if (!isAuth) { //user is not authenticated
     window.location.href = "/auth";
@@ -42,11 +44,14 @@ function App() {
   return (
     <BrowserRouter>
       <Routes>
-        {/* <Route path="/" element={<Layout signUserOuty={signUserOut} setIsAuthh={setIsAuth} isAuthh={isAuth} />}> */}
+        <Route path="/" element={<Auth setIsAuth={setIsAuth} />} />
+
         <Route path="/auth" element={<Auth setIsAuth={setIsAuth} />} />
         <Route path='/new-chat' element={<NewChat />} />
         <Route path="/chat/:room" element={<Chat isAuth={isAuth} />} />
         <Route path="/conversation-list" element={<ConversationList setRoom={setRoom} />} />
+        <Route path="/feedback" element={<Feedback />} />
+        <Route path="/" element={<SignOut signUserOut={signUserOut} setIsAuth={setIsAuth} isAuth={isAuth} />} />
 
       </Routes>
     </BrowserRouter >

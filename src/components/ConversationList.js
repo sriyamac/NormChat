@@ -49,7 +49,7 @@ export const ConversationList = () => {
           <p>Conversation List</p>
         </div>
         <div>
-          <button className="btn br-1 mr-2">Feedback</button>
+          <Link to="/feedback"><button className="btn br-1 mr-2">Feedback</button></Link>
           <Link to="/new-chat"><button className="btn btn-success">New Chat</button></Link>
         </div>
       </div>

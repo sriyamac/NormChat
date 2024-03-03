@@ -8,6 +8,7 @@ import { Link, useParams } from "react-router-dom"
 import { Card } from "../components/ui/card";
 import { SignOut } from "./SignOut";
 
+
 export const Chat = (isAuth) => {
   // Check if user is logged in
   if (!isAuth) {
