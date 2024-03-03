@@ -90,7 +90,7 @@ export const Chat = (isAuth) => {
             </button>
           </form>
 
-          <button className=" close"><Link to="/conversation-list">Close Chat</Link></button>
+          <button className="send-button close"><Link to="/conversation-list">Close Chat</Link></button>
         </Card> </div>
     </div >
   );
