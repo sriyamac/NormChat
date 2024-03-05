@@ -12,7 +12,6 @@ import { ConversationList } from './components/ConversationList.js';
 import { Chat } from "./components/Chat.js"
 import { NewChat } from './components/newChat.js'
 
-import Feedback from './components/Feedback';
 import { SignOut } from './components/SignOut';
 
 const cookies = new Cookies(); //get, set, and remove cookies from browser
@@ -50,7 +49,6 @@ function App() {
         <Route path='/new-chat' element={<NewChat />} />
         <Route path="/chat/:room" element={<Chat isAuth={isAuth} />} />
         <Route path="/conversation-list" element={<ConversationList setRoom={setRoom} />} />
-        <Route path="/feedback" element={<Feedback />} />
         <Route path="/" element={<SignOut signUserOut={signUserOut} setIsAuth={setIsAuth} isAuth={isAuth} />} />
 
       </Routes>
