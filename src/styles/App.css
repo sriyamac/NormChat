@@ -6,10 +6,11 @@ body {
 
 
 .header {
-  background-color: #00703c; 
-  color: #ffffff; 
+  background-color: #00703c;
+  color: #ffffff;
   padding: 20px;
   text-align: center;
+  margin-top: .5rem;
 }
 
 .header h1 {
@@ -22,13 +23,95 @@ body {
   justify-content: center;
   align-items: center;
   height: 100vh;
-  background-color: #f0f0f0; 
+  background-color: #f0f0f0;
 }
 
 .auth-content {
   width: 350px;
 }
 
+
+.sign-out {
+  display: flex;
+  justify-content: flex-end;
+  margin: auto;
+
+}
+
+.sign-out button {
+  border-radius: var(--rounded-btn, 0.5rem);
+  height: fit-content;
+  text-align: vertical-align;
+  font-size: .56rem;
+  margin-right: 1rem;
+  margin-top: .5rem;
+
+
+}
+
+.sign-out button label {
+  text-align: center;
+  padding: auto;
+}
+
+.sign-out button:hover {
+  background-color: darkred;
+  color: white;
+}
+
+
+.close {
+  border-radius: var(--rounded-btn, 0.5rem);
+  height: fit-content;
+  font-size: .56rem;
+}
+
+.close:hover {
+  background-color: darkred;
+  color: white;
+}
+
+.send-button {
+  border-radius: var(--rounded-btn, 0.5rem);
+  height: fit-content;
+  text-align: vertical-align;
+  margin: auto;
+  margin-left: 1rem;
+
+
+}
+
+.send-button:hover {
+  background-color: #00703c;
+  color: white;
+}
+
+.chat-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  background-color: #f0f0f0;
+
+}
+
+
+
+/* .new-message-form input {
+  width: 100%;
+} */
+
+.messagesCard {
+
+  background-color: #ffffff;
+  border-radius: 8px;
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+  padding: 20px;
+  width: fit-content;
+
+
+}
 
 .auth-card {
   background-color: #ffffff;
@@ -44,12 +127,12 @@ body {
 
 .card-header h2 {
   margin: 0;
-  color: #333333; 
+  color: #333333;
 }
 
 .card-header p {
   margin: 0;
-  color: #666666; 
+  color: #666666;
 }
 
 .card-content {
@@ -60,7 +143,7 @@ body {
 .separator {
   text-align: center;
   margin: 10px 0;
-  color: #666666; 
+  color: #666666;
 }
 
 .card-footer {
@@ -70,7 +153,7 @@ body {
 .card-footer p {
   font-size: 12px;
   text-align: center;
-  color: #666666; 
+  color: #666666;
 }
 
 button {
@@ -85,19 +168,20 @@ button {
 }
 
 button:hover {
-  background-color: #005395; 
-  color: #ffffff; 
+  background-color: #005395;
+  color: #ffffff;
 }
 
 button:disabled {
-  background-color: #cccccc; 
-  color: #999999; 
+  background-color: #cccccc;
+  color: #999999;
 }
 
 /* Conversation List styling */
 .room-card:hover {
   background-color: #f8f8f8;
 }
+
 
 /*body {
   padding: 0;
