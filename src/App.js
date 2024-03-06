@@ -4,19 +4,19 @@ import { BrowserRouter, Routes, Route } from "react-router-dom"
 import { v4 as uuidv4 } from 'uuid'; //for new room reference 
 import { signOut } from 'firebase/auth';
 import { auth } from './firebase-config'
-
+import { Home } from './components/Home.js'
 import "./styles/App.css";
-
 import { Auth } from './components/Auth.js';
 import { ConversationList } from './components/ConversationList.js';
 import { Chat } from "./components/Chat.js"
 import { NewChat } from './components/newChat.js'
-import { Layout } from "./Layout.js"
+
 
 const cookies = new Cookies(); //get, set, and remove cookies from browser
 
 
 function App() {
+
   const [isAuth, setIsAuth] = useState(cookies.get("auth-token")) //if there is an auth-token then set to true (you can check by inspecting page manually)
 
   //once a user logs in, uuidv4 will generate a unique room ID
@@ -36,20 +36,24 @@ function App() {
   };
 
   if (!isAuth) { //user is not authenticated
-    window.location.href = "/auth";
+    return ( //then shows user authentication process 
+      <Auth setIsAuth={setIsAuth} />
+    );
+
   }
+
 
   return (
     <BrowserRouter>
       <Routes>
-        <Route path="/" element={<Layout signUserOut={signUserOut} setIsAuth={setIsAuth} isAuth={isAuth} />}>
-          <Route path="/auth" element={<Auth setIsAuth={setIsAuth} />} />
-          <Route path='/new-chat' element={<NewChat />} />
-          <Route path="/chat/:room" element={<Chat isAuth={isAuth} />} />
-          <Route path="/conversation-list" element={<ConversationList setRoom={setRoom} />} />
-        </Route>
+        <Route path="/" element={<Home isAuth={isAuth} />} />
+        <Route path="/auth" element={<Auth setIsAuth={setIsAuth} />} />
+        <Route path='/new-chat' element={<NewChat />} />
+        <Route path="/chat/:room" element={<Chat isAuth={isAuth} />} />
+        <Route path="/conversation-list" element={<ConversationList setRoom={setRoom} />} />
       </Routes>
     </BrowserRouter>
+
   );
 }
 
