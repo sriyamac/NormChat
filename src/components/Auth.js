@@ -1,14 +1,9 @@
 import { auth, provider } from "../firebase-config.js";
 import { signInWithPopup } from "firebase/auth";
 import "../styles/App.css";
-
 import Cookies from "universal-cookie";
+import { Card } from "../components/ui/card";
 
-import { Button, buttonVariants } from "../components/ui/button";
-import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "../components/ui/card";
-import { Input } from "../components/ui/input";
-import { Link } from "react-router-dom";
-import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "../components/ui/select";
 
 const cookies = new Cookies(); //get, set, and remove cookies from browser
 
@@ -23,7 +18,7 @@ export const Auth = ({ setIsAuth, setRoom }) => {
       console.error(error); //trouble shooting
     }
   };
-  
+
   return (
     <div className="auth-container">
       <header className="header">
