@@ -19,11 +19,11 @@ Navigate from one page to another: https://stackoverflow.com/questions/37295377/
 
 elements that appear on every page go in Layout.js
 
-### Daisy UI
+### Daisy UI Documentation
 Docs: https://daisyui.com/components/
 
 ### Colors
-The following colors are in the tailwind theme:
+The following colors are in the theme:
         'niner-green': '#00703c',
         'theme-bg': '#f8f8f8',
         'secondary-text': '#666666',
@@ -37,3 +37,6 @@ import { getAuth } from "firebase/auth";
 const auth = getAuth();
 const user = auth.currentUser;
 ~~~
+
+### Tailwind Documentation
+https://tailwindcss.com/docs/installation
