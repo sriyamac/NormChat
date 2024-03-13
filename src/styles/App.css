@@ -4,14 +4,14 @@ body {
   padding: 0;
 }
 
-
-.header {
+/* Recreated styling using Tailwind css in Chat.js */
+/* .header {
   background-color: #00703c;
   color: #ffffff;
   padding: 20px;
   text-align: center;
   margin-top: .5rem;
-}
+} */
 
 .header h1 {
   margin: 0;
@@ -37,28 +37,6 @@ body {
   margin: auto;
 
 }
-
-.sign-out button {
-  border-radius: var(--rounded-btn, 0.5rem);
-  height: fit-content;
-  text-align: vertical-align;
-  font-size: .56rem;
-  margin-right: 1rem;
-  margin-top: .5rem;
-
-
-}
-
-.sign-out button label {
-  text-align: center;
-  padding: auto;
-}
-
-.sign-out button:hover {
-  background-color: darkred;
-  color: white;
-}
-
 
 .close {
   border-radius: var(--rounded-btn, 0.5rem);

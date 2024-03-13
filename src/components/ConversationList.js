@@ -6,7 +6,6 @@ import { getAuth } from 'firebase/auth'
 import Cookies from "universal-cookie";
 import { v4 as uuidv4 } from 'uuid'; //for new room reference 
 import { signOut } from 'firebase/auth';
-import { Auth } from "./Auth";
 
 const cookies = new Cookies(); //get, set, and remove cookies from browser
 
@@ -43,7 +42,9 @@ export const ConversationList = () => {
 
     const fetchClosedRooms = async () => {
       const user = await fetchUser();
-      if (!user) return;
+      if (!user) {
+        window.location.href = "/auth"; //redirecting to new-chat to create new chat;
+      }
 
       // get list of conversations
       const roomsCollection = collection(db, 'messages');
@@ -71,7 +72,7 @@ export const ConversationList = () => {
     <div className="">
       <div className="sign-out">
         <Link to="/auth">
-          <button onClick={signUserOut}> SIGN OUT </button>
+          <button onClick={signUserOut} className='btn btn-active'> Sign Out </button>
         </Link>
       </div>
       <div className="p-3 flex flex-row justify-between shadow-sm items-center">
