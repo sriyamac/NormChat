@@ -70,21 +70,23 @@ export const ConversationList = () => {
 
   return (
     <div className="">
-      <div className="sign-out">
-        <Link to="/auth">
-          <button onClick={signUserOut} className='btn btn-active'> Sign Out </button>
-        </Link>
-      </div>
-      <div className="p-3 flex flex-row justify-between shadow-sm items-center">
-
+      <div className="shadow-sm bg-[#00703c] grid grid-cols-3 justify-items-center items-center p-2 text-white">
+        <div className='text-3xl justify-self-start'>
+          <p>NormChat</p>
+        </div>
         <div className='text-2xl'>
           <p>Conversations</p>
         </div>
-        <div>
-          <Link to="/feedback" className='mr-2'>
-            <button className="btn br-1 mr-2">Feedback</button>
+        <div className='justify-self-end'>
+          <Link to="/new-chat" className='mr-2'>
+            <button className="btn btn-success text-white">+ New Chat</button>
           </Link>
-          <Link to="/new-chat"><button className="btn btn-success">New Chat</button></Link>
+          <Link to="/feedback" className='mr-2'>
+            <button className="btn btn-active">Feedback</button>
+          </Link>
+          <Link to="/auth">
+            <button onClick={signUserOut} className='btn btn-active'> Sign Out </button>
+          </Link>
         </div>
       </div>
       <div className='container pt-2 pb-2'>

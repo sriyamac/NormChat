@@ -80,9 +80,10 @@ export const Chat = (isAuth) => {
   return (
 
     <div className="chat-app">
-      <div className="bg-[#00703c] grid grid-cols-3 justify-items-center items-center p-2">
+      {/* Header styling has been recreated with tailwindcss: https://tailwindcss.com/docs/ */}
+      <div className="bg-[#00703c] grid grid-cols-3 justify-items-center items-center p-2 text-white">
         <div></div>
-        <h1 className="text-white">Room ID: {room.toUpperCase()}</h1> {/**room ID is displayed for debugging purposes, will change to "NormChat" before deployment*/}
+        <h1>Room ID: {room.toUpperCase()}</h1> {/**room ID is displayed for debugging purposes, will change to "NormChat" before deployment*/}
         <Link to="/auth" className="justify-self-end">
           <button onClick={signUserOut} className='btn btn-active'> Sign Out </button>
         </Link>

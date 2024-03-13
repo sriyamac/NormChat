@@ -4,14 +4,13 @@ body {
   padding: 0;
 }
 
-/* Recreated styling using Tailwind css in Chat.js */
-/* .header {
+.header {
   background-color: #00703c;
   color: #ffffff;
   padding: 20px;
   text-align: center;
   margin-top: .5rem;
-} */
+} 
 
 .header h1 {
   margin: 0;
