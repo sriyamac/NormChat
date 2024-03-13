@@ -77,7 +77,7 @@ export const ConversationList = () => {
       <div className="p-3 flex flex-row justify-between shadow-sm items-center">
 
         <div className='text-2xl'>
-          <p>Conversation List</p>
+          <p>Conversations</p>
         </div>
         <div>
           <Link to="/feedback" className='mr-2'>
