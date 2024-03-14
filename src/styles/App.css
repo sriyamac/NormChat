@@ -188,6 +188,15 @@ button:disabled {
   height: calc(100vh-64px);
   margin-top: 64px;
 }
+.room-card {
+  padding: .625rem;
+  margin: .5rem;
+  border-radius: 0.5rem;
+}
+.room-link {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+}
 /*body {
   padding: 0;
   margin: 0;

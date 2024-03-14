@@ -92,10 +92,10 @@ export const ConversationList = () => {
       <div className='content-container'>
         <div className='container room-list'>
           {closedRooms.map((closedRoom) => (
-            <div key={closedRoom.id} className='p-2.5 m-2 rounded shadow-sm border room-card'>
-              <Link to={`/chat/${closedRoom.id}`} className='grid grid-cols-2'>
+            <div key={closedRoom.id} className='shadow-sm border room-card'>
+              <Link to={`/chat/${closedRoom.id}`} className='room-link'>
                 <div><strong>Last Message: </strong>{closedRoom.lastMessage}</div>
-                <div>Room: {closedRoom.room}</div>
+                <div>Room ID: {closedRoom.room}</div>
               </Link>
             </div>
           ))}
