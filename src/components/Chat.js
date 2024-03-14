@@ -80,7 +80,6 @@ export const Chat = (isAuth) => {
   return (
 
     <div className="chat-app">
-      {/* Header styling has been recreated with tailwindcss: https://tailwindcss.com/docs/ */}
       <div className="header">
         <div></div>
         <h1>Room ID: {room.toUpperCase()}</h1> {/**room ID is displayed for debugging purposes, will change to "NormChat" before deployment*/}

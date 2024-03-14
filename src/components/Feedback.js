@@ -2,6 +2,7 @@ import { Link } from "react-router-dom"
 
 export const Feedback = () => {
   /*
+  Styling created with tailwindcss
   To do: 
   - Change back icon to an X
   - Add form logic
