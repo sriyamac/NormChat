@@ -3,17 +3,39 @@ body {
   margin: 0;
   padding: 0;
 }
-
-.header {
+.auth-header {
   background-color: #00703c;
   color: #ffffff;
   padding: 20px;
   text-align: center;
-  margin-top: .5rem;
+}
+.header {
+  background-color: #00703c;
+  color: #ffffff;
+  padding: 0.5rem;
+  text-align: center;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  justify-items: center;
+  align-items: center;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
 } 
+.header-left-col {
+  justify-self: start;
+}
 
-.header h1 {
-  margin: 0;
+.header-right-col {
+  justify-self: end;
+}
+.header-button-container {
+  display: grid;
+  grid-template-columns: auto auto auto;
+  gap: .5rem;
+  justify-content: end;
+  justify-items: end;
 }
 
 .auth-container {
@@ -158,8 +180,14 @@ button:disabled {
 .room-card:hover {
   background-color: #f8f8f8;
 }
-
-
+.room-list {
+  padding: .5rem 0 .5rem 0;
+}
+.content-container {
+  overflow-y: auto;
+  height: calc(100vh-64px);
+  margin-top: 64px;
+}
 /*body {
   padding: 0;
   margin: 0;

@@ -70,18 +70,18 @@ export const ConversationList = () => {
 
   return (
     <div className="">
-      <div className="shadow-sm bg-[#00703c] grid grid-cols-3 justify-items-center items-center p-2 text-white">
-        <div className='text-3xl justify-self-start'>
+      <div className="header">
+        <div className='text-3xl header-left-col'>
           <p>NormChat</p>
         </div>
         <div className='text-2xl'>
           <p>Conversations</p>
         </div>
-        <div className='justify-self-end'>
-          <Link to="/new-chat" className='mr-2'>
+        <div className='header-right-col header-button-container'>
+          <Link to="/new-chat">
             <button className="btn btn-success text-white">+ New Chat</button>
           </Link>
-          <Link to="/feedback" className='mr-2'>
+          <Link to="/feedback">
             <button className="btn btn-active">Feedback</button>
           </Link>
           <Link to="/auth">
@@ -89,15 +89,17 @@ export const ConversationList = () => {
           </Link>
         </div>
       </div>
-      <div className='container pt-2 pb-2'>
-        {closedRooms.map((closedRoom) => (
-          <div key={closedRoom.id} className='p-2.5 m-2 rounded shadow-sm border room-card'>
-            <Link to={`/chat/${closedRoom.id}`} className='grid grid-cols-2'>
-              <div><strong>Last Message: </strong>{closedRoom.lastMessage}</div>
-              <div>Room: {closedRoom.room}</div>
-            </Link>
-          </div>
-        ))}
+      <div className='content-container'>
+        <div className='container room-list'>
+          {closedRooms.map((closedRoom) => (
+            <div key={closedRoom.id} className='p-2.5 m-2 rounded shadow-sm border room-card'>
+              <Link to={`/chat/${closedRoom.id}`} className='grid grid-cols-2'>
+                <div><strong>Last Message: </strong>{closedRoom.lastMessage}</div>
+                <div>Room: {closedRoom.room}</div>
+              </Link>
+            </div>
+          ))}
+        </div>
       </div>
     </div>
   );
