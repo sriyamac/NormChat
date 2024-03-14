@@ -6,7 +6,6 @@ import { getAuth } from 'firebase/auth'
 import Cookies from "universal-cookie";
 import { v4 as uuidv4 } from 'uuid'; //for new room reference 
 import { signOut } from 'firebase/auth';
-import { Auth } from "./Auth";
 
 const cookies = new Cookies(); //get, set, and remove cookies from browser
 
@@ -43,7 +42,9 @@ export const ConversationList = () => {
 
     const fetchClosedRooms = async () => {
       const user = await fetchUser();
-      if (!user) return;
+      if (!user) {
+        window.location.href = "/auth"; //redirecting to new-chat to create new chat;
+      }
 
       // get list of conversations
       const roomsCollection = collection(db, 'messages');
@@ -69,30 +70,36 @@ export const ConversationList = () => {
 
   return (
     <div className="">
-      <div className="sign-out">
-        <Link to="/auth">
-          <button onClick={signUserOut}> SIGN OUT </button>
-        </Link>
-      </div>
-      <div className="p-3 flex flex-row justify-between shadow-sm items-center">
-
+      <div className="header">
+        <div className='text-3xl header-left-col'>
+          <p>NormChat</p>
+        </div>
         <div className='text-2xl'>
           <p>Conversations</p>
         </div>
-        <div>
-          <button className="btn br-1 mr-2">Feedback</button>
-          <Link to="/new-chat"><button className="btn btn-success">New Chat</button></Link>
+        <div className='header-right-col header-button-container'>
+          <Link to="/new-chat">
+            <button className="btn btn-success text-white">+ New Chat</button>
+          </Link>
+          <Link to="/feedback">
+            <button className="btn btn-active">Feedback</button>
+          </Link>
+          <Link to="/auth">
+            <button onClick={signUserOut} className='btn btn-active'> Sign Out </button>
+          </Link>
         </div>
       </div>
-      <div className='container pt-2 pb-2'>
-        {closedRooms.map((closedRoom) => (
-          <div key={closedRoom.id} className='p-2.5 m-2 rounded shadow-sm border room-card'>
-            <Link to={`/chat/${closedRoom.id}`} className='grid grid-cols-2'>
-              <div><strong>Last Message: </strong>{closedRoom.lastMessage}</div>
-              <div>Room: {closedRoom.room}</div>
-            </Link>
-          </div>
-        ))}
+      <div className='content-container'>
+        <div className='container room-list'>
+          {closedRooms.map((closedRoom) => (
+            <div key={closedRoom.id} className='shadow-sm border room-card'>
+              <Link to={`/chat/${closedRoom.id}`} className='room-link'>
+                <div><strong>Last Message: </strong>{closedRoom.lastMessage}</div>
+                <div>Room ID: {closedRoom.room}</div>
+              </Link>
+            </div>
+          ))}
+        </div>
       </div>
     </div>
   );

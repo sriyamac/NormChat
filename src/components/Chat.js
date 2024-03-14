@@ -80,14 +80,12 @@ export const Chat = (isAuth) => {
   return (
 
     <div className="chat-app">
-      <div className="sign-out">
-        <Link to="/auth">
-          <button onClick={signUserOut}> SIGN OUT </button>
-        </Link>
-      </div>
-
       <div className="header">
+        <div></div>
         <h1>Room ID: {room.toUpperCase()}</h1> {/**room ID is displayed for debugging purposes, will change to "NormChat" before deployment*/}
+        <Link to="/auth" className="header-right-col">
+          <button onClick={signUserOut} className='btn btn-active'> Sign Out </button>
+        </Link>
       </div>
 
       <div className="chat-container">
@@ -110,12 +108,12 @@ export const Chat = (isAuth) => {
               className="new-message-input"
               placeholder="Type your message here..."
             />
-            <button type="submit" className="send-button">
+            <button type="submit" className="btn btn-success">
               Send
             </button>
           </form>
 
-          <button className=" close"><Link to="/conversation-list">Close Chat</Link></button>
+          <Link to="/conversation-list"><button className="btn btn-active">Close Chat</button></Link>
         </Card> </div>
     </div >
   );

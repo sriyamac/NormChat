@@ -21,7 +21,7 @@ export const Auth = ({ setIsAuth, setRoom }) => {
 
   return (
     <div className="auth-container">
-      <header className="header">
+      <header className="auth-header">
         <h1>NormChat</h1>
       </header>
       <div className="auth-content">
@@ -36,7 +36,7 @@ export const Auth = ({ setIsAuth, setRoom }) => {
               <input type="email" placeholder="Email" className="input input-bordered w-full max-w-xs mb-1 p-1.5 border rounded" />
               <input type="password" placeholder="Password" className="input input-bordered w-full max-w-xs p-1.5 border rounded" />
             </form>
-            <button className="btn btn-success w-full">Sign in with Email</button>
+            <button className="btn btn-success btn-wide w-full">Sign in with Email</button>
           </div>
           <div className="card-footer">
             <p>Created by students for students to answer all UNC Charlotte-related questions.</p>
