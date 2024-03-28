@@ -3,6 +3,7 @@ import { signInWithPopup } from "firebase/auth";
 import "../styles/App.css";
 import Cookies from "universal-cookie";
 import { Card } from "../components/ui/card";
+import { Link } from 'react-router-dom';
 
 
 const cookies = new Cookies(); //get, set, and remove cookies from browser
@@ -19,6 +20,9 @@ export const Auth = ({ setIsAuth, setRoom }) => {
     }
   };
 
+  function signUpRedirect() {
+    window.location.href = "/signup"; //redirecting to signup page
+  }
   return (
     <div className="auth-container">
       <header className="auth-header">
@@ -27,7 +31,7 @@ export const Auth = ({ setIsAuth, setRoom }) => {
       <div className="auth-content">
         <Card className="auth-card">
           <div className="card-header">
-            <h2 className="pb-2.5 text-lg">Sign In</h2>
+            <p className="pb-3 text-xl">Sign In</p>
           </div>
           <div className="card-content">
             <button className="btn btn-success" onClick={signInWithGoogle}>Sign in with Google</button>
@@ -36,7 +40,8 @@ export const Auth = ({ setIsAuth, setRoom }) => {
               <input type="email" placeholder="Email" className="input input-bordered w-full max-w-xs mb-1 p-1.5 border rounded" />
               <input type="password" placeholder="Password" className="input input-bordered w-full max-w-xs p-1.5 border rounded" />
             </form>
-            <button className="btn btn-success btn-wide w-full">Sign in with Email</button>
+            <button className="btn btn-success btn-wide w-full mb-2.5">Sign in</button>
+            <button className="btn btn-success btn-wide w-full" onClick={signUpRedirect}>Sign up</button>
           </div>
           <div className="card-footer">
             <p>Created by students for students to answer all UNC Charlotte-related questions.</p>
