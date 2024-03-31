@@ -4,7 +4,6 @@ import { BrowserRouter, Routes, Route } from "react-router-dom"
 import { v4 as uuidv4 } from 'uuid'; //for new room reference 
 import { signOut } from 'firebase/auth';
 import { auth } from './firebase-config'
-import { Signup } from './components/Signup.js'
 import { Home } from './components/Home.js'
 import "./styles/App.css";
 import { Auth } from './components/Auth.js';
@@ -50,7 +49,6 @@ function App() {
       <Routes>
         <Route path="/" element={<Home isAuth={isAuth} />} />
         <Route path="/auth" element={<Auth setIsAuth={setIsAuth} />} />
-        <Route path='/signup' element={<Signup />} />
         <Route path='/new-chat' element={<NewChat />} />
         <Route path="/chat/:room" element={<Chat isAuth={isAuth} />} />
         <Route path="/conversation-list" element={<ConversationList setRoom={setRoom} />} />

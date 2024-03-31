@@ -18,7 +18,6 @@ export const Signup = () => {
               <input type="email" placeholder="Email" className="input input-bordered w-full max-w-xs mb-1 p-1.5 border rounded" />
               <input type="password" placeholder="Password" className="input input-bordered w-full max-w-xs p-1.5 border rounded" />
             </form>
-            <button className="btn btn-success btn-wide w-full mb-2.5">Sign in</button>
             <button className="btn btn-success btn-wide w-full">Sign up</button>
           </div>
           <div className="card-footer">
