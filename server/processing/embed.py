@@ -20,7 +20,7 @@ index = pc.Index(index_name)
 print("please work")
 vectors = []
 response = openai.Embedding.create(
-             model="text-embedding-3-small",  # or any other suitable model
+             model="text-embedding-ada-002",  # or any other suitable model
             input="please work"  # Choose the model that best fits your needs
         )
 # Extracting the embedding vector
@@ -53,7 +53,7 @@ def insert_into_pinecone(text_chunks, vectors):
     index.upsert(vectors=data)
 
 # Example usage
-file_path = "/Users/jaredhawkins-young/Downloads/documentation_chatbot/aux-uncc.txt"
+file_path = "/Users/jaredhawkins-young/Downloads/ITSC4155/processing/aux-uncc.txt"
 text_chunks = split_text(file_path)
 vectors = vectorize_text(text_chunks)
 insert_into_pinecone(text_chunks, vectors)
