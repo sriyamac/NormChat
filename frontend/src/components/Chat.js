@@ -7,7 +7,7 @@ import { signOut } from 'firebase/auth';
 import { Auth } from "./Auth";
 import { Link, useParams } from "react-router-dom"
 import { Card } from "../components/ui/card";
-
+import chat from "../chat-helper";
 
 const cookies = new Cookies(); //get, set, and remove cookies from browser
 
@@ -55,6 +55,9 @@ export const Chat = (isAuth) => {
       user: auth.currentUser.displayName, //username
       room, //may delete later
     });
+    // call chat method to get response from gpt
+    const response = await chat(newMessage);
+    console.log(response);
 
     setNewMessage("") //emptys input after
   };
