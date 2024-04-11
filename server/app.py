@@ -8,6 +8,6 @@ async def root():
     return {"message": "Hello World"}
 
 @app.get("/chat/{user_query}")
-async def chat():
-    response = Chatbot.ask_openai(user_query: str)
+async def chat(user_query):
+    response = Chatbot.ask_openai(user_query)
     return {"message": response}
