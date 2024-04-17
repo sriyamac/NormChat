@@ -16,3 +16,19 @@ This is a work in progress.
 `cd server`
 
 `uvicorn main:app --reload` to start uvicorn
+
+## API Specifications 
+
+### /chat
+
+**Making a request**
+
+Method: POST <br>
+Headers:  "Content-Type": "application/json",<br>
+Body: Must be JSON. <br>
+Body Fields: content, stores user query. <br>
+
+**Response** 
+
+JSON data is returned with a field "message" containing 
+the response from NormChat.
