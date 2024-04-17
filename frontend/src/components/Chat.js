@@ -55,10 +55,12 @@ export const Chat = (isAuth) => {
       user: auth.currentUser.displayName, //username
       room, //may delete later
     });
+    
     // call chat method to get response from gpt
     const response = await chat(newMessage);
     console.log(response);
 
+    // add message to messages array
     await addDoc(messagesRef, {
       text: JSON.parse(response).message, //content of the message
       createdAt: serverTimestamp(), //time message was created

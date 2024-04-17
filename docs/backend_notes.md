@@ -12,4 +12,7 @@ as there are syntax differences that cause errors with older versions of python.
 
 ### To run the server 
 This is a work in progress.
+
+`cd server`
+
 `uvicorn main:app --reload` to start uvicorn
