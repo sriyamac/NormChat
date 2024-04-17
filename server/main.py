@@ -27,7 +27,6 @@ async def root():
 
 @app.post("/chat")
 async def chat(user_query: UserRequest):
-    return user_query.content
     response = Chatbot.ask_openai(Chatbot,"hello",150)
     print(response);
     return {"message": response}

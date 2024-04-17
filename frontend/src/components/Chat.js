@@ -59,6 +59,13 @@ export const Chat = (isAuth) => {
     const response = await chat(newMessage);
     console.log(response);
 
+    await addDoc(messagesRef, {
+      text: JSON.parse(response).message, //content of the message
+      createdAt: serverTimestamp(), //time message was created
+      user: "NormChat", //username
+      room, //may delete later
+    });
+
     setNewMessage("") //emptys input after
   };
 
