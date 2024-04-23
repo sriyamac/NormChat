@@ -35,6 +35,7 @@ async def root():
     return {"message": "Hello World"}
 
 # startchat api is used to start the chat and get the welcome message
+# Not in use yet.
 @app.get("/startchat")
 async def startchat():
     response = chatbot.start_chat();
