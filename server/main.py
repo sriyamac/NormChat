@@ -37,8 +37,7 @@ async def root():
 # startchat api is used to start the chat and get the welcome message
 @app.get("/startchat")
 async def startchat():
-    response = chatbot.ask_openai(Chatbot,"hello",150)
-    print(response);
+    response = chatbot.start_chat();
     return {"message": response}
 
 # Chat API is used to get a response from chatbot.py. 
