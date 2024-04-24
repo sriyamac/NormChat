@@ -7,7 +7,7 @@ import { signOut } from 'firebase/auth';
 import { Auth } from "./Auth";
 import { Link, useParams } from "react-router-dom"
 import { Card } from "../components/ui/card";
-import chat from "../chat-helper";
+import { chat } from "../chat-helper";
 
 const cookies = new Cookies(); //get, set, and remove cookies from browser
 
