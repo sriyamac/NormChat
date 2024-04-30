@@ -1,11 +1,7 @@
 import os
 from dotenv import load_dotenv
-import pandas as pd
 import openai
-import numpy as np
-from pinecone import Pinecone, ServerlessSpec
-from sentence_transformers import SentenceTransformer
-from transformers import GPT2LMHeadModel, GPT2Tokenizer
+from pinecone import Pinecone
 
 load_dotenv() 
 
