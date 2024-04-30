@@ -3,8 +3,6 @@ from dotenv import load_dotenv
 import openai
 from pinecone import Pinecone
 
-load_dotenv() 
-
 class Chatbot:
     def __init__(self):
         load_dotenv()  # Load environment variables from .env file
@@ -16,23 +14,33 @@ class Chatbot:
         pinecone_api_key = os.getenv("PINECONE_API_KEY")
         pinecone_index_name = os.getenv("PINECONE_INDEX_NAME")
         self.pinecone_index = self.pc.Index(pinecone_index_name)
+
+        # Initialize chat history with the bot's role description
+        self.chat_history = [
+            {"role": "system", "content": "You are a helpful assistant for the University of North Carolina at Charlotte whose job is to give useful information about UNCC's campus."}
+        ]
     
     def ask_openai(self, prompt, max_tokens=150):
         try:
+            
+            history_context =" ".join([msg['content'] for msg in self.chat_history if msg['role'] == 'system'])
+            full_prompt = f"{history_context}\n{prompt}"
+
             response = openai.ChatCompletion.create(
-                model="gpt-4-turbo-preview",  # Specify the chat model you're using
-                messages=[
-                    {"role": "system", "content": "You are a helpful assistant for the University of North Carloina at Charlotte whos job is to give useful information about UNCC's campus."},
-                    {"role": "user", "content": prompt},
-                ],
+                model="gpt-4-turbo-preview",  
+                messages=self.chat_history,
                 max_tokens=max_tokens,
                 temperature=0.5,
             )
+
             # Extract and return the text from the latest message in the response
             if response['choices'] and len(response['choices']) > 0:
                 latest_choice = response['choices'][0]
                 if latest_choice['message']['content']:
-                    return latest_choice['message']['content'].strip()
+                    bot_response = latest_choice['message']['content'].strip()
+                    # Append bot's response to chat history
+                    self.chat_history.append({"role": "system", "content": bot_response})
+                    return bot_response
             return "I'm sorry, I couldn't generate a response."
         except Exception as e:
             print(f"Error in ask_openai: {str(e)}")
@@ -95,6 +103,9 @@ class Chatbot:
             if user_input.lower() == "exit":
                 print("[Norm]: Goodbye!")
                 break
+            # Add message to history
+            self.chat_history.append({"role": "user", "content": user_input})
+            
             # First, try to get relevant information from Pinecone
             pinecone_response = self.query_pinecone_and_generate_response(user_input)
             if pinecone_response:
