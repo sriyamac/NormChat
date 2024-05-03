@@ -95,37 +95,42 @@ export const Chat = (isAuth) => {
       <div className="header">
         <div></div>
         <h1>Room ID: {room.toUpperCase()}</h1> {/**room ID is displayed for debugging purposes, will change to "NormChat" before deployment*/}
-        <Link to="/auth" className="header-right-col">
-          <button onClick={signUserOut} className='btn btn-active'> Sign Out </button>
-        </Link>
+        <div className="header-right-col header-button-container">
+          <Link to="/conversation-list">
+            <button className="btn btn-active">Close Chat</button>
+          </Link>
+          <Link to="/auth">
+            <button onClick={signUserOut} className='btn btn-active'> Sign Out </button>
+          </Link>
+        </div>
       </div>
 
       <div className="chat-container">
-        <Card className="messagesCard">
-          <div className="messages">
+        <Card className="messagesCard grid grid-cols-1 grid-rows-11">
+          <div className="messages row-span-10 overflow-y-scroll flex flex-col">
 
             {messages.map((message) => (
-              <div key={message.id} className="message">
-                <span className="user">{message.user}:</span> {message.text}
+              <div key={message.id} className="m-2">
+                <div class={message.user=="NormChat" ? 'chat-start flex flex-row':'chat-end flex flex-row justify-end'}>
+                  <div class="chat-bubble">{message.text}</div>
+                </div>
               </div>
             ))}
 
           </div>
 
-          <form onSubmit={handleSubmit} className="new-message-form">
+          <form onSubmit={handleSubmit} className="new-message-form row-span-1 grid grid-cols-6 gap-2">
             <input
               type="text"
               value={newMessage}
               onChange={(event) => setNewMessage(event.target.value)}
-              className="new-message-input"
+              className="input input-bordered col-span-5"
               placeholder="Type your message here..."
             />
-            <button type="submit" className="btn btn-success">
+            <button type="submit" className="btn btn-success col-span-1">
               Send
             </button>
-          </form>
-
-          <Link to="/conversation-list"><button className="btn btn-active">Close Chat</button></Link>
+          </form >
         </Card> </div>
     </div >
   );

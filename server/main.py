@@ -45,7 +45,7 @@ async def startchat():
 # details about specifications can be found in backend_notes.md
 @app.post("/chat")
 async def chat(user_query: UserRequest):
-    response = Chatbot.ask_openai(Chatbot,user_query.content,150)
+    response = chatbot.ask_openai(user_query.content,150)
     print(response)
     return {"message": response}
 
