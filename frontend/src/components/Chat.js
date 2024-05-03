@@ -107,11 +107,13 @@ export const Chat = (isAuth) => {
 
       <div className="chat-container">
         <Card className="messagesCard grid grid-cols-1 grid-rows-11">
-          <div className="messages row-span-10 overflow-y-scroll">
+          <div className="messages row-span-10 overflow-y-scroll flex flex-col">
 
             {messages.map((message) => (
               <div key={message.id} className="m-2">
-                <span className="user">{message.user}:</span> {message.text}
+                <div class={message.user=="NormChat" ? 'chat-start flex flex-row':'chat-end flex flex-row justify-end'}>
+                  <div class="chat-bubble">{message.text}</div>
+                </div>
               </div>
             ))}
 
