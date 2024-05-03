@@ -101,8 +101,8 @@ export const Chat = (isAuth) => {
       </div>
 
       <div className="chat-container">
-        <Card className="messagesCard">
-          <div className="messages">
+        <Card className="messagesCard grid grid-cols-1 grid-rows-11">
+          <div className="messages row-span-10">
 
             {messages.map((message) => (
               <div key={message.id} className="message">
@@ -112,18 +112,18 @@ export const Chat = (isAuth) => {
 
           </div>
 
-          <form onSubmit={handleSubmit} className="new-message-form">
+          <form onSubmit={handleSubmit} className="new-message-form row-span-1 grid grid-cols-6">
             <input
               type="text"
               value={newMessage}
               onChange={(event) => setNewMessage(event.target.value)}
-              className="new-message-input"
+              className="new-message-input col-span-5 m-1"
               placeholder="Type your message here..."
             />
-            <button type="submit" className="btn btn-success">
+            <button type="submit" className="btn btn-success col-span-1">
               Send
             </button>
-          </form>
+          </form >
 
           <Link to="/conversation-list"><button className="btn btn-active">Close Chat</button></Link>
         </Card> </div>
