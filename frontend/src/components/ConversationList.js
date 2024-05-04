@@ -61,7 +61,7 @@ export const ConversationList = () => {
               id: doc.id,
               user: doc.data().user,
               room: doc.data().room,
-              lastMessage: doc.data().text,
+              lastMessage: doc.data().text.split(' ').slice(0, 30).join(' ') + "...", //display only first 30 words
               timestamp: doc.data().createdAt.toDate().toLocaleString() // timestamp of the last message
             });
           }
