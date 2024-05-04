@@ -62,6 +62,7 @@ class Chatbot:
             return None
 
     def query_pinecone_and_generate_response(self, query_text, top_k=3):
+        print(query_text)
         try:
             query_vector = self.generate_query_vector(query_text)
             if query_vector is None:
@@ -95,6 +96,21 @@ class Chatbot:
             print(f"Error in querying Pinecone and generating response: {str(e)}")
             return "I encountered an error while trying to generate a response."
 
+    def get_response(self, user_input):
+        while True:
+            # Add message to history
+            self.chat_history.append({"role": "user", "content": user_input})
+            # First, try to get relevant information from Pinecone
+            pinecone_response = self.query_pinecone_and_generate_response(user_input)
+            if pinecone_response:
+                # Process Pinecone response to generate a meaningful reply
+                # This part needs customization based on how your data is structured in Pinecone
+                return pinecone_response
+            else:
+                prompt = user_input  # Customize this prompt with more context if needed
+                response = self.ask_openai(prompt)
+                return response
+            
     def start_chat(self):
         bot = 'Norm'
         print("[Norm]: Hello! How can I help you with University of North Carolina at Charlotte information? Type 'exit' to close chat.")
@@ -103,21 +119,8 @@ class Chatbot:
             if user_input.lower() == "exit":
                 print("[Norm]: Goodbye!")
                 break
-            # Add message to history
-            self.chat_history.append({"role": "user", "content": user_input})
-            
-            # First, try to get relevant information from Pinecone
-            pinecone_response = self.query_pinecone_and_generate_response(user_input)
-            if pinecone_response:
-                # Process Pinecone response to generate a meaningful reply
-                # This part needs customization based on how your data is structured in Pinecone
-                print(f"[Norm]: {pinecone_response}")
-            else:
-                # If Pinecone does not return useful info, fallback to OpenAI
-                print('openai fall back response')
-                prompt = user_input  # Customize this prompt with more context if needed
-                response = self.ask_openai(prompt)
-                print(f"[Norm]: {response}")
+            response = self.get_response(user_input)
+            print(f"[Norm]: {response}")
 
 if __name__ == "__main__":
     chatbot = Chatbot()

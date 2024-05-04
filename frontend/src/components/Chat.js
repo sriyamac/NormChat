@@ -4,7 +4,6 @@ import { db, auth } from "../firebase-config";
 import Cookies from "universal-cookie";
 import { v4 as uuidv4 } from 'uuid'; //for new room reference 
 import { signOut } from 'firebase/auth';
-import { Auth } from "./Auth";
 import { Link, useParams } from "react-router-dom"
 import { Card } from "../components/ui/card";
 import { chat } from "../chat-helper";
@@ -43,6 +42,7 @@ export const Chat = (isAuth) => {
 
     return () => unsuscribe(); //cleaning up function
   }, []);
+
 
   const handleSubmit = async (e) => { //messages are created
     e.preventDefault();
@@ -88,9 +88,7 @@ export const Chat = (isAuth) => {
 
   };
 
-
   return (
-
     <div className="chat-app">
       <div className="header">
         <div></div>
@@ -107,12 +105,12 @@ export const Chat = (isAuth) => {
 
       <div className="chat-container">
         <Card className="messagesCard grid grid-cols-1 grid-rows-11">
-          <div className="messages row-span-10 overflow-y-scroll flex flex-col">
+          <div className="messages row-span-10 overflow-y-scroll overflow-x-hidden flex flex-col">
 
             {messages.map((message) => (
               <div key={message.id} className="m-2">
-                <div class={message.user=="NormChat" ? 'chat-start flex flex-row':'chat-end flex flex-row justify-end'}>
-                  <div class="chat-bubble">{message.text}</div>
+                <div className={message.user=="NormChat" ? 'chat-start flex flex-row':'chat-end flex flex-row justify-end'}>
+                  <div className="chat-bubble">{message.text}</div>
                 </div>
               </div>
             ))}
