@@ -30,7 +30,7 @@ class Chatbot:
                 model="gpt-4-turbo-preview",  
                 messages=self.chat_history,
                 max_tokens=max_tokens,
-                temperature=0.5,
+                temperature=0.3,
             )
 
             # Extract and return the text from the latest message in the response
