@@ -9,6 +9,8 @@
 Documents (User stories, Context diagram, Use case diagram, Product backlog, Activity diagram, Design Document versions) are in the `/docs` folder
 <p> </p>
 
+## .env file was emailed to Sandra Wiktor (swiktor@uncc.edu) and Mohsen Dorodchi (mdorodch@charlotte.edu)
+
 ## Requirements/Steps:
 
 ```bash
