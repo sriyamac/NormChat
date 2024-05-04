@@ -5,6 +5,10 @@
 ## Project Overview: 
 <p>NormChat is an AI Chatbot designed to provide quick access to UNC Charlotte website information for students. Students can log in with their email address and can ask questions related to UNC Charlotte in the chatbot. The chatbot will then swiftly retrieve relevant information from the website delivering concise responses within seconds. Navigating the university website can often be inconvenient and lengthy due to its outdated interface. NinerChat offers students a streamlined solution to quickly access specific information they need.</p>
 
+## Documents:
+Documents (User stories, Context diagram, Use case diagram, Product backlog, Activity diagram, Design Document versions) are in the `/docs` folder
+<p> </p>
+
 ## Requirements:
 
 ```bash
