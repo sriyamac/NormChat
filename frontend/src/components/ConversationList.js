@@ -30,39 +30,50 @@ export const ConversationList = () => {
 
   };
 
+  const fetchUser = async () => {
+    const auth = getAuth();
+    const user = auth.currentUser;
+    return user;
+  }
   const [closedRooms, setClosedRooms] = useState([]);
   useEffect(() => {
-    // get current user 
-    const fetchUser = async () => {
-      const auth = getAuth()
-      const user = auth.currentUser;
-      return user;
-    }
-
     const fetchClosedRooms = async () => {
       const user = await fetchUser();
       if (!user) {
         window.location.href = "/auth"; //redirecting to new-chat to create new chat;
       }
 
-      // get list of conversations
+      // Initialize an empty array to store last messages for each room
+      const lastMessages = [];
+
+      // Get list of conversations
       const roomsCollection = collection(db, 'messages');
       const closedRoomsQuery = query(roomsCollection, orderBy('createdAt', 'desc'));
 
       try {
         const closedRoomsSnapshot = await getDocs(closedRoomsQuery);
-        const closedRoomsData = closedRoomsSnapshot.docs.map((doc) => ({
-          id: doc.id,
-          user: doc.data.user,
-          room: doc.data().room, //room reference 
-          lastMessage: doc.data().text, // the last message the user sent in the room
-        }));
+        closedRoomsSnapshot.forEach((doc) => {
+          // For each room, check if the last message is already recorded
+          const roomIndex = lastMessages.findIndex((msg) => msg.room === doc.data().room);
+          if (roomIndex === -1) {
+            // If no last message recorded for this room, add it to the array
+            lastMessages.push({
+              id: doc.id,
+              user: doc.data().user,
+              room: doc.data().room,
+              lastMessage: doc.data().text,
+              timestamp: doc.data().createdAt.toDate().toLocaleString() // timestamp of the last message
+            });
+          }
+        });
 
-        setClosedRooms(closedRoomsData);
+        // Set the state with the array of last messages for each room
+        setClosedRooms(lastMessages);
       } catch (error) {
         console.error('Error fetching closed rooms:', error);
       }
     };
+
     console.log("fetching...")
     fetchClosedRooms();
   }, []);
@@ -94,7 +105,7 @@ export const ConversationList = () => {
             <div key={closedRoom.id} className='shadow-sm border room-card'>
               <Link to={`/chat/${closedRoom.room}`} className='room-link'>
                 <div><strong>Last Message: </strong>{closedRoom.lastMessage}</div>
-                <div>Room ID: {closedRoom.room}</div>
+                <div>{closedRoom.timestamp}</div>
               </Link>
             </div>
           ))}
