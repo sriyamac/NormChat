@@ -34,13 +34,6 @@ chatbot = Chatbot()
 async def root():
     return {"message": "Hello World"}
 
-# startchat api is used to start the chat and get the welcome message
-# Not in use yet.
-@app.get("/startchat")
-async def startchat():
-    response = chatbot.start_chat();
-    return {"message": response}
-
 # Chat API is used to get a response from chatbot.py. 
 # details about specifications can be found in backend_notes.md
 @app.post("/chat")

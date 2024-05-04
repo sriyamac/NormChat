@@ -7,7 +7,7 @@ import { signOut } from 'firebase/auth';
 import { Auth } from "./Auth";
 import { Link, useParams } from "react-router-dom"
 import { Card } from "../components/ui/card";
-import { chat } from "../chat-helper";
+import { chat, startChat } from "../chat-helper";
 
 const cookies = new Cookies(); //get, set, and remove cookies from browser
 
@@ -41,8 +41,24 @@ export const Chat = (isAuth) => {
       setMessages(messages);
     });
 
+    // if messages is empty, call initialize chat to get welcome message
+    if (messages.length < 1) {
+      initializeChat();
+    }
+
     return () => unsuscribe(); //cleaning up function
   }, []);
+
+  // initialize displays a welcome message 
+  const initializeChat = async (e) => {
+    // add message to messages array
+    await addDoc(messagesRef, {
+      text: "Hello! How can I help you with University of North Carolina at Charlotte information?", //content of the message
+      createdAt: serverTimestamp(), //time message was created
+      user: "NormChat", //username
+      room, //may delete later
+    });
+  }
 
   const handleSubmit = async (e) => { //messages are created
     e.preventDefault();
@@ -62,7 +78,7 @@ export const Chat = (isAuth) => {
 
     // add message to messages array
     await addDoc(messagesRef, {
-      text: JSON.parse(response).message, //content of the message
+      text: JSON.parse(response), //content of the message
       createdAt: serverTimestamp(), //time message was created
       user: "NormChat", //username
       room, //may delete later
@@ -88,9 +104,7 @@ export const Chat = (isAuth) => {
 
   };
 
-
   return (
-
     <div className="chat-app">
       <div className="header">
         <div></div>
@@ -111,8 +125,8 @@ export const Chat = (isAuth) => {
 
             {messages.map((message) => (
               <div key={message.id} className="m-2">
-                <div class={message.user=="NormChat" ? 'chat-start flex flex-row':'chat-end flex flex-row justify-end'}>
-                  <div class="chat-bubble">{message.text}</div>
+                <div className={message.user=="NormChat" ? 'chat-start flex flex-row':'chat-end flex flex-row justify-end'}>
+                  <div className="chat-bubble">{message.text}</div>
                 </div>
               </div>
             ))}
