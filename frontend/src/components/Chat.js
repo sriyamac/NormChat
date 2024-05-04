@@ -41,11 +41,6 @@ export const Chat = (isAuth) => {
       setMessages(messages);
     });
 
-    // if messages is empty, call initialize chat to get welcome message
-    if (messages.length < 1) {
-      initializeChat();
-    }
-
     return () => unsuscribe(); //cleaning up function
   }, []);
 
