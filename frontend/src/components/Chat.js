@@ -4,10 +4,9 @@ import { db, auth } from "../firebase-config";
 import Cookies from "universal-cookie";
 import { v4 as uuidv4 } from 'uuid'; //for new room reference 
 import { signOut } from 'firebase/auth';
-import { Auth } from "./Auth";
 import { Link, useParams } from "react-router-dom"
 import { Card } from "../components/ui/card";
-import { chat, startChat } from "../chat-helper";
+import { chat } from "../chat-helper";
 
 const cookies = new Cookies(); //get, set, and remove cookies from browser
 
