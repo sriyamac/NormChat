@@ -105,7 +105,7 @@ export const ConversationList = () => {
             <div key={closedRoom.id} className='shadow-sm border room-card'>
               <Link to={`/chat/${closedRoom.room}`} className='room-link'>
                 <div><strong>Last Message: </strong>{closedRoom.lastMessage}</div>
-                <div>{closedRoom.timestamp}</div>
+                <div><b>{closedRoom.timestamp}</b></div>
               </Link>
             </div>
           ))}

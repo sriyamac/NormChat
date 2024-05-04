@@ -46,6 +46,9 @@ body {
   align-items: center;
   height: 100vh;
   background-color: #f0f0f0;
+  background-image: url('../uncc.jpg');
+  background-size: cover;
+  background-position: center;
 }
 
 .auth-content {

@@ -8,6 +8,7 @@ import { Auth } from "./Auth";
 import { Link, useParams } from "react-router-dom"
 import { Card } from "../components/ui/card";
 import { chat } from "../chat-helper";
+import "../styles/App.css";
 
 const cookies = new Cookies(); //get, set, and remove cookies from browser
 
@@ -94,7 +95,7 @@ export const Chat = (isAuth) => {
     <div className="chat-app">
       <div className="header">
         <div></div>
-        <h1>Room ID: {auth.currentUser ? auth.currentUser.displayName : "Guest"}</h1> {/**room ID is displayed for debugging purposes, will change to "NormChat" before deployment*/}
+        <h1>Welcome  <b>{auth.currentUser ? auth.currentUser.displayName : "Guest"}</b></h1> {/**room ID is displayed for debugging purposes, will change to "NormChat" before deployment*/}
         <div className="header-right-col header-button-container">
           <Link to="/conversation-list">
             <button className="btn btn-active">Close Chat</button>
