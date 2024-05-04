@@ -73,7 +73,7 @@ export const Chat = (isAuth) => {
 
     // add message to messages array
     await addDoc(messagesRef, {
-      text: JSON.parse(response), //content of the message
+      text: JSON.parse(response).message, //content of the message
       createdAt: serverTimestamp(), //time message was created
       user: "NormChat", //username
       room, //may delete later

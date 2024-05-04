@@ -38,7 +38,7 @@ async def root():
 # details about specifications can be found in backend_notes.md
 @app.post("/chat")
 async def chat(user_query: UserRequest):
-    response = chatbot.query_pinecone_and_generate_response(user_query.content)
+    response = chatbot.get_response(user_query.content)
     print(response)
     return {"message": response}
 
