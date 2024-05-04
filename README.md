@@ -9,7 +9,7 @@
 Documents (User stories, Context diagram, Use case diagram, Product backlog, Activity diagram, Design Document versions) are in the `/docs` folder
 <p> </p>
 
-## Requirements:
+## Requirements/Steps:
 
 ```bash
 git clone https://github.com/sriyamac/ITSC4155_NormChat_Group9
@@ -21,6 +21,8 @@ cd ITSC4155_NormChat_Group9/frontend
 npm install
 npm start
 ```
+
+Now please keep the terminal for frontend running and open a new terminal and run the lines below for the server
 
 ## Installing Python Packages
 ```bash
