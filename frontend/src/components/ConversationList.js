@@ -11,7 +11,6 @@ const cookies = new Cookies(); //get, set, and remove cookies from browser
 
 export const ConversationList = () => {
 
-
   const [isAuth1, setIsAuth1] = useState(cookies.get("auth-token")) //if there is an auth-token then set to true (you can check by inspecting page manually)
 
   const [room1, setRoom1] = useState(uuidv4()) //for joining different chatbots
@@ -93,7 +92,7 @@ export const ConversationList = () => {
         <div className='container room-list'>
           {closedRooms.map((closedRoom) => (
             <div key={closedRoom.id} className='shadow-sm border room-card'>
-              <Link to={`/chat/${closedRoom.id}`} className='room-link'>
+              <Link to={`/chat/${closedRoom.room}`} className='room-link'>
                 <div><strong>Last Message: </strong>{closedRoom.lastMessage}</div>
                 <div>Room ID: {closedRoom.room}</div>
               </Link>

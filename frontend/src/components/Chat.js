@@ -52,7 +52,7 @@ export const Chat = (isAuth) => {
     await addDoc(messagesRef, {
       text: newMessage, //content of the message
       createdAt: serverTimestamp(), //time message was created
-      user: auth.currentUser.displayName, //username
+      user: auth.currentUser ? auth.currentUser.displayName : "Anonymous",//username
       room, //may delete later
     });
     
@@ -94,7 +94,7 @@ export const Chat = (isAuth) => {
     <div className="chat-app">
       <div className="header">
         <div></div>
-        <h1>Room ID: {room.toUpperCase()}</h1> {/**room ID is displayed for debugging purposes, will change to "NormChat" before deployment*/}
+        <h1>Room ID: {auth.currentUser ? auth.currentUser.displayName : "Guest"}</h1> {/**room ID is displayed for debugging purposes, will change to "NormChat" before deployment*/}
         <div className="header-right-col header-button-container">
           <Link to="/conversation-list">
             <button className="btn btn-active">Close Chat</button>
