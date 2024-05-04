@@ -41,11 +41,17 @@ export const Chat = (isAuth) => {
       setMessages(messages);
     });
 
+    if (messages.length == 0) {
+      initializeChat();
+      console.log("initializeChat");
+    }
+
     return () => unsuscribe(); //cleaning up function
   }, []);
 
   // initialize displays a welcome message 
   const initializeChat = async (e) => {
+    console.log("initializeChat");
     // add message to messages array
     await addDoc(messagesRef, {
       text: "Hello! How can I help you with University of North Carolina at Charlotte information?", //content of the message
