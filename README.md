@@ -10,7 +10,7 @@ Documents (User stories, Context diagram, Use case diagram, Product backlog, Act
 <p> </p>
 
 ## .env file was emailed to Sandra Wiktor (swiktor@uncc.edu) and Mohsen Dorodchi (mdorodch@charlotte.edu)
-After cloning the capstone project locally, please add the `.env` attached file to its root (top level) directory. Please let me know if you run into any issues when running our codebase!
+After cloning the capstone project locally, please add the `.env` attached file to its root (top level) directory.
 <p></p>
 
 ## Requirements/Steps:
